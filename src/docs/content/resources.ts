@@ -7,7 +7,7 @@ export const resources: DocPages = {
     blocks: [
       { t: 'h2', id: 'library', text: 'Option A: the library build' },
       { t: 'p', text: 'Build the package once. It outputs an ES module with all components and composables, a single CSS file with tokens, themes and utilities, and type declarations.' },
-      { t: 'code', lang: 'bash', code: 'npm run build:lib\n# dist-lib/akwapui.js, dist-lib/akwapui.css, dist-lib/types/' },
+      { t: 'code', lang: 'bash', code: 'npm run build:lib\n# dist-lib/akwapui.js, dist-lib/style.css, dist-lib/types/' },
       { t: 'p', text: 'In your app, install the peer dependencies and import the CSS once:' },
       { t: 'code', lang: 'bash', code: 'npm install vue vue-router @lucide/vue\nnpm install ../akwapui   # or publish dist-lib to your registry' },
       {
