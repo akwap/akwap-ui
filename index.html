@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AkwapUI — a Fluent 2-inspired, token-driven design system for Vue 3 and Tailwind CSS." />
+    <meta name="color-scheme" content="light dark" />
+    <title>AkwapUI</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var pref = localStorage.getItem('akwapui:theme') || 'system';
+          var theme = pref === 'system'
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : pref;
+          if (pref === 'system' && window.matchMedia('(forced-colors: active)').matches) theme = 'high-contrast';
+          document.documentElement.setAttribute('data-theme', theme);
+          var brand = JSON.parse(localStorage.getItem('akwapui:brand') || 'null');
+          if (brand && typeof brand.hue === 'number') {
+            document.documentElement.style.setProperty('--ak-brand-hue', String(brand.hue));
+            document.documentElement.style.setProperty('--ak-brand-chroma', String(brand.chroma));
+          }
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

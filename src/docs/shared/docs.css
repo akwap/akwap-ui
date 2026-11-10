@@ -1,0 +1,63 @@
+/* Prose helpers used only by the documentation site. Plain CSS on tokens. */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ak-space-2);
+  max-width: 48rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  color: var(--ak-color-text-secondary);
+  font-size: var(--ak-font-size-300);
+  line-height: var(--ak-line-height-300);
+}
+.doc-list li::marker {
+  color: var(--ak-color-text-tertiary);
+}
+.doc-defs {
+  display: grid;
+  gap: var(--ak-space-3);
+  max-width: 48rem;
+}
+.doc-defs > div {
+  display: grid;
+  gap: var(--ak-space-1);
+}
+@media (min-width: 40rem) {
+  .doc-defs > div {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--ak-space-4);
+  }
+}
+.doc-defs dt {
+  color: var(--ak-color-text-primary);
+  font-weight: var(--ak-font-weight-semibold);
+  font-size: var(--ak-font-size-300);
+  line-height: var(--ak-line-height-300);
+}
+.doc-defs dd {
+  color: var(--ak-color-text-secondary);
+  font-size: var(--ak-font-size-300);
+  line-height: var(--ak-line-height-300);
+}
+.doc-prose p {
+  max-width: 48rem;
+  color: var(--ak-color-text-secondary);
+  font-size: var(--ak-font-size-300);
+  line-height: var(--ak-line-height-300);
+}
+.doc-prose p + p {
+  margin-top: var(--ak-space-3);
+}
+.doc-prose :is(p, li, dd) code:not(pre code),
+.doc-prose td > span > code {
+  border-radius: var(--ak-radius-small);
+  background: var(--ak-color-surface-tertiary);
+  padding: 0 4px;
+  font-family: var(--ak-font-family-mono);
+  font-size: 0.92em;
+  color: var(--ak-color-text-primary);
+}
+.doc-prose p,
+.doc-list li {
+  overflow-wrap: anywhere;
+}

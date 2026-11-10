@@ -1,0 +1,61 @@
+{
+  "name": "akwapui",
+  "version": "1.0.0",
+  "description": "AkwapUI — an accessible Vue 3 + Tailwind CSS v4 design system with light, dark and high-contrast themes.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist-lib"
+  ],
+  "main": "./dist-lib/akwapui.js",
+  "module": "./dist-lib/akwapui.js",
+  "types": "./dist-lib/types/design-system/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist-lib/types/design-system/index.d.ts",
+      "import": "./dist-lib/akwapui.js"
+    },
+    "./style.css": "./dist-lib/style.css",
+    "./tailwind.css": "./dist-lib/styles/tailwind.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "build:lib": "vite build -c vite.lib.config.ts && vue-tsc -p tsconfig.lib.json && node scripts/fix-lib-types.mjs && node scripts/copy-lib-styles.mjs",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test --trace off"
+  },
+  "peerDependencies": {
+    "@lucide/vue": "^1.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vue/test-utils": "^2.5.1",
+    "@vue/tsconfig": "^0.9.1",
+    "jsdom": "^31.0.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0",
+    "vue-tsc": "^3.3.14"
+  }
+}
