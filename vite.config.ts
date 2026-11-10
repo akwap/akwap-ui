@@ -15,10 +15,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('@lucide')) return 'icons'
-            return 'vendor'
-          }
+          // Vue runtime + router in one long-cached chunk; icons are left to
+          // Rollup so each page only loads the icons it uses.
+          if (id.includes('node_modules') && !id.includes('@lucide')) return 'vendor'
         },
       },
     },

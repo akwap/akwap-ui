@@ -6,6 +6,7 @@ import AkLiveRegion from '@/components/shared/AkLiveRegion.vue'
 import AkSkipLink from '@/components/shared/AkSkipLink.vue'
 import { useTheme } from '@/composables/useTheme'
 import { useAnnouncer } from '@/composables/useAnnouncer'
+import { pageTitle } from '@/router'
 
 // Fluent-style icon weight across the whole app.
 setLucideProps({ strokeWidth: 1.75 })
@@ -22,7 +23,7 @@ router.afterEach((to, from) => {
     return
   }
   if (to.path === from.path) return
-  announce(`${(to.meta.title as string) ?? 'Page'} loaded`)
+  announce(`${pageTitle(to) ?? 'Page'} loaded`)
   requestAnimationFrame(() => document.getElementById('main')?.focus({ preventScroll: true }))
 })
 </script>

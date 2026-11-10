@@ -217,6 +217,7 @@ export type { NavItem, NavSection } from '@/components/ui/navigation/AkNavList.v
 export type { Command } from '@/components/ui/overlays/AkCommandPalette.vue'
 export type { SelectOption } from '@/components/ui/forms/AkSelect.vue'
 export type { Series } from '@/components/ui/charts/chartUtils'
+export type { Rule } from '@/utils/validation'
 
 export { useTheme } from '@/composables/useTheme'
 export { useBrand } from '@/composables/useBrand'
@@ -224,6 +225,7 @@ export { useToast } from '@/composables/useToast'
 export { useAnnouncer } from '@/composables/useAnnouncer'
 export { useFocusTrap } from '@/composables/useFocusTrap'
 export { useFloating } from '@/composables/useFloating'
+export { useForm } from '@/composables/useForm'
 export { rules, validate, passwordStrength } from '@/utils/validation'
 
 /** Vue plugin: registers every Ak* component globally. */

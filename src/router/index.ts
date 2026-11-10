@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, type RouteLocationNormalized, type RouteRecordRaw } from 'vue-router'
 import { docsRoutes } from './docs'
+import { flatDocs } from '@/docs/nav'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -40,6 +41,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   ...docsRoutes,
+  { path: '/playground-frame', name: 'playground-frame', component: () => import('@/docs/playground/PlaygroundFrame.vue'), meta: { title: 'Playground preview' } },
   { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/pages/NotFoundPage.vue'), meta: { title: 'Page not found' } },
 ]
 
@@ -48,13 +50,21 @@ export const router = createRouter({
   routes,
   scrollBehavior(to, _from, saved) {
     if (saved) return saved
-    if (to.hash) return { el: to.hash, behavior: 'smooth', top: 80 }
+    if (to.hash) {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'reduced'
+      return { el: to.hash, behavior: reduce ? 'auto' : 'smooth', top: 80 }
+    }
     return { top: 0 }
   },
 })
 
+/** Human page title: documentation pages use their sidebar label. */
+export function pageTitle(to: RouteLocationNormalized): string | undefined {
+  return flatDocs.find((d) => d.href === to.path)?.label ?? (to.meta.title as string | undefined)
+}
+
 router.afterEach((to) => {
-  const title = to.meta.title as string | undefined
+  const title = pageTitle(to)
   document.title = title ? `${title} · AkwapUI` : 'AkwapUI'
 })
 
