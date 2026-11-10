@@ -1,0 +1,7 @@
+node_modules/
+static/css/
+staticfiles/
+assets/css/akwapui.css
+db.sqlite3
+.venv/
+static/islands/

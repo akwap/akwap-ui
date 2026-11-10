@@ -1,0 +1,14 @@
+/* Tailwind entry for the example project.
+   `python manage.py akwapui_tailwind` writes ./akwapui.css, which imports the
+   AkwapUI tokens, themes, utilities and .ak-* component classes from the
+   installed package and tells Tailwind to scan its templates. */
+@import 'tailwindcss';
+@import './akwapui.css';
+
+/* Your own templates and any JS that builds class names. */
+@source '../../templates';
+@source '../../showcase';
+
+/* Optional Vue islands: let Tailwind see the classes the AkwapUI Vue
+   components use. In your project: @source '../../node_modules/akwapui/dist-lib'; */
+@source '../../../../../dist-lib';

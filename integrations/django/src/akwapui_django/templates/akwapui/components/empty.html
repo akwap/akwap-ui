@@ -1,0 +1,6 @@
+{% load akwapui %}<div class="ak-empty"{{ attrs }}>
+  <span class="ak-empty-icon">{% ak_icon icon %}</span>
+  <{{ heading_tag }} class="ak-empty-title">{{ title }}</{{ heading_tag }}>
+  {% if description %}<p class="ak-empty-description">{{ description }}</p>{% endif %}
+  {% if content %}<div class="ak-empty-actions">{{ content }}</div>{% endif %}
+</div>

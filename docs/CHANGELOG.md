@@ -6,6 +6,7 @@ All notable changes to AkwapUI are recorded here. The format follows [Keep a Cha
 
 ### Added
 
+- Django integration (`integrations/django`, guide in `docs/DJANGO.md`): an `akwapui-django` app with component template tags, `.ak-*` component classes, an accessible form renderer, the theme switcher and brand colour, the icon set as inline SVG, a Tailwind setup command and a prebuilt stylesheet for apps without Node, plus `{% ak_island %}` for mounting Vue components into Django pages. Includes an example project and 31 tests. `npm run build:django` regenerates the package's CSS and icons from the design system.
 - Accent colour palette: 12 hues (red, orange, amber, lime, green, teal, cyan, blue, indigo, purple, magenta, pink) generated in OKLCH, with theme-aware text, fill, tint and border roles for light, dark and high contrast, Tailwind utilities, and `accentFor()` for stable colours per category. Contrast is at least 5.6:1 for every text pairing.
 - `AkBadge` accepts accent colours; `AkAvatar` uses the accent palette for initials and takes a `color` prop.
 - `AkIcon` component with six sizes, role and accent colours, and an optional accessible label.

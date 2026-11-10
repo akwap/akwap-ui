@@ -1,0 +1,5 @@
+{% load akwapui %}{% if form.non_field_errors %}<div class="ak-form-errors">{% ak_alert intent="danger" %}{% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}{% endak_alert %}</div>{% endif %}
+{% for field in form.hidden_fields %}{% if field.errors %}<div class="ak-form-errors">{% ak_alert intent="danger" %}{{ field.label }}: {{ field.errors|join:" " }}{% endak_alert %}</div>{% endif %}{{ field }}{% endfor %}
+<div class="ak-form">
+{% for field in form.visible_fields %}{% if field.field.template_name %}{{ field.as_field_group }}{% else %}{% include "akwapui/forms/field.html" %}{% endif %}
+{% endfor %}</div>

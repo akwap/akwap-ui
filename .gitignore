@@ -27,3 +27,10 @@ test-results
 playwright-report
 coverage
 dist-lib
+
+# Python (Django integration)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+integrations/django/build/

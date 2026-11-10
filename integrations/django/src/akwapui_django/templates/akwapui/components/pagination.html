@@ -1,0 +1,12 @@
+{% load akwapui %}<div class="ak-pagination">
+  {% if summary %}<p class="ak-pagination-summary"><span class="font-semibold text-primary tabular-nums">{{ page.start_index }}–{{ page.end_index }}</span> of <span class="tabular-nums">{{ page.paginator.count }}</span></p>{% endif %}
+  {% if show_nav %}<nav aria-label="{{ label }}">
+    <ul>
+      <li class="hidden sm:block"><a class="ak-page" {% if is_first %}aria-disabled="true"{% else %}href="{{ first_url }}"{% endif %} aria-label="First page">{% ak_icon "chevrons-left" %}</a></li>
+      <li><a class="ak-page" {% if prev_url %}href="{{ prev_url }}"{% else %}aria-disabled="true"{% endif %} aria-label="Previous page">{% ak_icon "chevron-left" %}</a></li>
+      {% for p in pages %}<li>{% if p %}<a class="ak-page" href="{{ p.url }}" aria-label="Page {{ p.number }}"{% if p.current %} aria-current="page"{% endif %}>{{ p.number }}</a>{% else %}<span class="ak-page-gap" aria-hidden="true">…</span>{% endif %}</li>{% endfor %}
+      <li><a class="ak-page" {% if next_url %}href="{{ next_url }}"{% else %}aria-disabled="true"{% endif %} aria-label="Next page">{% ak_icon "chevron-right" %}</a></li>
+      <li class="hidden sm:block"><a class="ak-page" {% if is_last %}aria-disabled="true"{% else %}href="{{ last_url }}"{% endif %} aria-label="Last page">{% ak_icon "chevrons-right" %}</a></li>
+    </ul>
+  </nav>{% endif %}
+</div>

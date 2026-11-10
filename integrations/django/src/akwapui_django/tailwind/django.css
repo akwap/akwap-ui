@@ -1,0 +1,342 @@
+/* ==========================================================================
+   AkwapUI for Django — component classes
+   --------------------------------------------------------------------------
+   Server-rendered templates cannot run the Vue components, so this file
+   restates the same recipes as plain `.ak-*` classes built from the same
+   token-backed utilities. Use them directly in any template:
+
+     <button class="ak-btn ak-btn-primary">Save</button>
+
+   or through the `{% load akwapui %}` template tags, which output them.
+   Keep these in step with src/components/ui when a Vue recipe changes.
+   The badge colour rules live in django-badges.css (generated).
+   ========================================================================== */
+
+@layer components {
+  /* ---- Button ----------------------------------------------------------- */
+  .ak-btn {
+    @apply relative inline-flex h-control-md min-w-20 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-control border px-3 text-body-1-strong whitespace-nowrap no-underline select-none;
+    @apply border-line bg-surface text-primary;
+    @apply transition-[background-color,border-color,color,opacity] duration-faster ease-standard focus-ring;
+  }
+  .ak-btn > svg { @apply size-5 shrink-0; }
+  .ak-btn:hover { @apply border-line-hover bg-surface-hover; }
+  .ak-btn:active { @apply bg-surface-pressed; }
+
+  .ak-btn-sm { @apply h-control-sm min-w-16 gap-1 px-2 text-caption-1 font-semibold; }
+  .ak-btn-sm > svg { @apply size-4; }
+  .ak-btn-lg { @apply h-control-lg min-w-24 gap-2 px-4 text-body-2 font-semibold; }
+
+  .ak-btn-icon { @apply size-control-md min-w-0 px-0; }
+  .ak-btn-icon.ak-btn-sm { @apply size-control-sm; }
+  .ak-btn-icon.ak-btn-lg { @apply size-control-lg; }
+  .ak-btn-icon.ak-btn-lg > svg { @apply size-6; }
+  .ak-btn-block { @apply flex w-full; }
+
+  .ak-btn-primary { @apply border-transparent bg-brand text-on-brand; }
+  .ak-btn-primary:hover { @apply border-transparent bg-brand-hover; }
+  .ak-btn-primary:active { @apply bg-brand-pressed; }
+
+  .ak-btn-outline { @apply border-brand-stroke bg-transparent text-brand; }
+  .ak-btn-outline:hover { @apply border-brand-stroke bg-brand-subtle; }
+  .ak-btn-outline:active { @apply bg-brand-subtle-hover; }
+
+  .ak-btn-subtle { @apply border-transparent bg-transparent text-primary; }
+  .ak-btn-subtle:hover { @apply border-transparent bg-subtle-hover; }
+  .ak-btn-subtle:active { @apply bg-subtle-pressed; }
+
+  .ak-btn-transparent { @apply border-transparent bg-transparent text-secondary; }
+  .ak-btn-transparent:hover { @apply border-transparent bg-transparent text-brand; }
+  .ak-btn-transparent:active { @apply bg-transparent opacity-80; }
+
+  .ak-btn-danger { @apply border-transparent bg-danger-strong text-on-brand; }
+  .ak-btn-danger:hover { @apply border-transparent bg-danger-hover; }
+  .ak-btn-danger:active { @apply bg-danger-pressed; }
+
+  .ak-btn-link { @apply h-auto min-w-0 border-transparent bg-transparent px-0 text-link underline-offset-2; }
+  .ak-btn-link:hover,
+  .ak-btn-link:active { @apply border-transparent bg-transparent text-link-hover underline; }
+
+  .ak-btn[aria-busy='true'] { @apply cursor-progress opacity-90; }
+  .ak-btn:disabled,
+  .ak-btn[aria-disabled='true']:not([aria-busy='true']) {
+    @apply cursor-not-allowed border-line-disabled bg-control-disabled text-disabled opacity-100;
+  }
+  .ak-btn-link:disabled,
+  .ak-btn-link[aria-disabled='true'] { @apply border-transparent bg-transparent text-disabled no-underline; }
+  .ak-btn[aria-pressed='true'] { @apply border-line-strong bg-surface-selected; }
+
+  /* ---- Spinner ---------------------------------------------------------- */
+  .ak-spinner { @apply inline-block size-5 shrink-0 animate-spin-ak rounded-full border-2 border-brand-secondary border-t-brand; }
+  .ak-spinner-xs { @apply size-3 border-[1.5px]; }
+  .ak-spinner-sm { @apply size-4 border-2; }
+  .ak-spinner-lg { @apply size-8 border-[3px]; }
+  .ak-spinner-current { @apply border-current/25 border-t-current; }
+
+  /* ---- Card ------------------------------------------------------------- */
+  .ak-card { @apply flex min-w-0 flex-col rounded-card border border-line-subtle bg-surface p-4 text-left sm:p-card; }
+  .ak-card-filled { @apply border-transparent bg-surface-secondary; }
+  .ak-card-subtle { @apply border-transparent bg-transparent; }
+  .ak-card-elevated { @apply border-transparent shadow-elevation-4 hc:border-line; }
+  .ak-card-pad-none { @apply p-0 sm:p-0; }
+  .ak-card-pad-none > .ak-card-header { @apply mb-0 p-4 sm:px-card; }
+  .ak-card-pad-sm { @apply p-3 sm:p-3; }
+  .ak-card-pad-lg { @apply p-6 sm:p-8; }
+  a.ak-card { @apply no-underline transition-[box-shadow,border-color] duration-fast ease-standard focus-ring; }
+  a.ak-card:hover { @apply border-line shadow-elevation-8; }
+  .ak-card-header { @apply mb-4 flex items-start gap-3; }
+  .ak-card-heading { @apply min-w-0 flex-1; }
+  .ak-card-title { @apply text-subtitle-2 text-primary; }
+  .ak-card-subtitle { @apply mt-0.5 text-caption-1 text-tertiary; }
+  .ak-card-actions { @apply -my-1 flex shrink-0 items-center gap-1; }
+  .ak-card-body { @apply min-w-0 flex-1; }
+  .ak-card-footer { @apply mt-4 flex items-center gap-2 border-t border-line-subtle pt-3; }
+
+  /* ---- Stat card -------------------------------------------------------- */
+  .ak-stat { @apply flex min-w-0 flex-col gap-3 rounded-card border border-line-subtle bg-surface p-4; }
+  .ak-stat-label { @apply flex items-center gap-2 truncate text-body-1 text-secondary; }
+  .ak-stat-icon { @apply flex size-8 shrink-0 items-center justify-center rounded-md bg-brand-subtle text-brand; }
+  .ak-stat-icon > svg { @apply size-4; }
+  .ak-stat-value { @apply text-title-2 whitespace-nowrap text-primary tabular-nums; }
+  .ak-stat-delta { @apply mt-1 flex flex-wrap items-center gap-x-1.5 text-caption-1 text-tertiary; }
+  .ak-stat-delta > strong { @apply inline-flex items-center gap-0.5 font-semibold text-secondary; }
+  .ak-stat-delta > strong > svg { @apply size-3.5; }
+  .ak-stat-good > strong { @apply text-success; }
+  .ak-stat-bad > strong { @apply text-danger; }
+
+  /* ---- Alert / message bar --------------------------------------------- */
+  .ak-alert { @apply flex items-start gap-3 rounded-md border border-info-border bg-info-background px-3 py-2.5 text-body-1; }
+  .ak-alert-icon { @apply mt-px size-5 shrink-0 text-info; }
+  .ak-alert-success { @apply border-success-border bg-success-background; }
+  .ak-alert-success .ak-alert-icon { @apply text-success; }
+  .ak-alert-warning { @apply border-warning-border bg-warning-background; }
+  .ak-alert-warning .ak-alert-icon { @apply text-warning; }
+  .ak-alert-danger { @apply border-danger-border bg-danger-background; }
+  .ak-alert-danger .ak-alert-icon { @apply text-danger; }
+  .ak-alert-content { @apply min-w-0 flex-1; }
+  .ak-alert-title { @apply text-body-1-strong text-primary; }
+  .ak-alert-body { @apply text-secondary; }
+  .ak-alert-title + .ak-alert-body { @apply mt-0.5; }
+  .ak-alert-actions { @apply mt-2 flex flex-wrap gap-2; }
+  .ak-alert-dismiss { @apply -my-1 -mr-1 inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-sm text-secondary focus-ring hover:bg-subtle-hover hover:text-primary; }
+  .ak-alert-dismiss > svg { @apply size-4; }
+
+  /* Django messages as a toast stack */
+  .ak-toaster { @apply pointer-events-none fixed inset-x-4 bottom-4 z-50 flex flex-col items-end gap-2 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-96; }
+  .ak-toaster > .ak-alert { @apply pointer-events-auto w-full bg-surface shadow-elevation-16; }
+  .ak-toaster > .ak-alert-success { @apply border-success-border; }
+  .ak-toaster > .ak-alert-warning { @apply border-warning-border; }
+  .ak-toaster > .ak-alert-danger { @apply border-danger-border; }
+  .ak-messages { @apply flex flex-col gap-2; }
+
+  /* ---- Badge (colour rules in django-badges.css) ----------------------- */
+  .ak-badge { @apply inline-flex h-5 max-w-full items-center gap-1 rounded-full border px-2 text-caption-1 font-semibold whitespace-nowrap; }
+  .ak-badge > svg { @apply size-3 shrink-0; }
+  .ak-badge-sm { @apply h-4 px-1.5 text-caption-2; }
+  .ak-badge-sm > svg { @apply size-2.5; }
+  .ak-badge-lg { @apply h-6 px-2.5 text-body-1; }
+  .ak-badge-lg > svg { @apply size-3.5; }
+  .ak-badge-rounded { @apply rounded-sm; }
+  .ak-badge-dot { @apply size-1.5 shrink-0 rounded-full bg-current; }
+
+  /* ---- Fields and controls --------------------------------------------- */
+  .ak-form { @apply flex flex-col gap-stack; }
+  .ak-field { @apply flex min-w-0 flex-col gap-1; }
+  .ak-field-horizontal { @apply grid gap-x-4 gap-y-1 sm:grid-cols-[minmax(120px,200px)_1fr] sm:items-start; }
+  .ak-field-horizontal > .ak-label { @apply sm:pt-1.5; }
+  .ak-field-control { @apply flex min-w-0 flex-col gap-1; }
+  .ak-label { @apply text-body-1-strong text-primary; }
+  .ak-label-required { @apply text-danger; }
+  .ak-label-optional { @apply font-normal text-tertiary; }
+  .ak-helper { @apply text-caption-1 text-tertiary; }
+  .ak-field-error { @apply flex items-start gap-1 text-caption-1 text-danger; }
+  .ak-field-error > svg { @apply mt-px size-3.5 shrink-0; }
+  .ak-field-error ul,
+  .ak-field-error li { @apply m-0 list-none p-0; }
+  .ak-form-errors { @apply mb-2; }
+
+  /* The shell: border, brand underline on focus, invalid/disabled states. */
+  .ak-control {
+    @apply relative flex h-control-md w-full items-center gap-1.5 rounded-control border border-line border-b-control-underline bg-control px-control-x text-body-1;
+    @apply transition-[border-color,box-shadow] duration-faster ease-standard hover:border-line-hover hover:border-b-line-strong;
+    @apply after:pointer-events-none after:absolute after:inset-x-[-1px] after:-bottom-px after:h-0.5 after:scale-x-0 after:rounded-b-control after:bg-brand after:transition-transform after:duration-normal after:ease-decelerate;
+    @apply focus-within:outline-1 focus-within:outline-offset-0 focus-within:outline-brand-stroke focus-within:after:scale-x-100;
+  }
+  .ak-control-sm { @apply h-control-sm text-caption-1; }
+  .ak-control-lg { @apply h-control-lg text-body-2; }
+  .ak-control > svg { @apply size-4 shrink-0 text-tertiary; }
+  .ak-control > input,
+  .ak-control > select,
+  .ak-control > textarea {
+    @apply h-full min-w-0 flex-1 self-stretch border-0 bg-transparent p-0 text-primary outline-none placeholder:text-tertiary disabled:cursor-not-allowed disabled:text-disabled;
+  }
+  .ak-control > input[type='file'] { @apply cursor-pointer py-1.5 file:mr-3 file:cursor-pointer file:rounded-sm file:border file:border-line file:bg-surface file:px-2 file:py-0.5 file:text-caption-1 file:font-semibold file:text-primary; }
+
+  /* Select: native element, custom chevron. */
+  .ak-control-select { @apply px-0; }
+  .ak-control-select > select { @apply cursor-pointer appearance-none pr-8 pl-control-x; }
+  .ak-control-select > select > option { @apply bg-surface text-primary; }
+  .ak-control-select > svg { @apply pointer-events-none absolute right-2.5 text-secondary; }
+  .ak-control-multiple { @apply h-auto px-0; }
+  .ak-control-multiple > select { @apply min-h-24 px-control-x py-1.5; }
+
+  /* Textarea: grows with content rows. */
+  .ak-control-textarea { @apply h-auto items-stretch px-0; }
+  .ak-control-textarea > textarea { @apply min-h-20 resize-y px-control-x py-1.5 text-body-1; }
+
+  .ak-control-invalid,
+  .ak-control:has(> [aria-invalid='true']) {
+    @apply border-danger-strong after:bg-danger-strong focus-within:outline-danger-strong hover:border-danger-strong;
+  }
+  .ak-control-disabled,
+  .ak-control:has(> :disabled) { @apply cursor-not-allowed border-line-disabled bg-control-disabled text-disabled hover:border-line-disabled; }
+  .ak-control:has(> [readonly]) { @apply bg-surface-secondary; }
+
+  /* Checkbox, radio and switch: native inputs, restyled. */
+  input.ak-check,
+  input.ak-radio,
+  input.ak-switch {
+    @apply relative m-0 shrink-0 cursor-pointer appearance-none border border-line-strong bg-control transition-colors duration-faster ease-standard;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-focus hover:border-fg-primary;
+    @apply disabled:cursor-not-allowed disabled:border-line-disabled disabled:bg-control-disabled;
+  }
+  input.ak-check { @apply mt-0.5 size-4 rounded-sm; }
+  input.ak-radio { @apply mt-0.5 size-4 rounded-full; }
+  input.ak-check:checked,
+  input.ak-check:indeterminate,
+  input.ak-radio:checked { @apply border-brand bg-brand hover:border-brand-hover hover:bg-brand-hover; }
+  input.ak-check:checked::before,
+  input.ak-check:indeterminate::before {
+    content: '';
+    @apply absolute inset-0 bg-on-brand;
+    mask: var(--ak-django-check) center / 12px 12px no-repeat;
+  }
+  input.ak-check:indeterminate::before { mask-image: var(--ak-django-minus); }
+  input.ak-radio:checked::before {
+    content: '';
+    @apply absolute inset-[3px] rounded-full bg-on-brand;
+  }
+  input.ak-check:disabled:checked,
+  input.ak-radio:disabled:checked { @apply border-line-disabled bg-control-disabled; }
+  input.ak-check:disabled:checked::before,
+  input.ak-radio:disabled:checked::before { @apply bg-fg-disabled; }
+  input.ak-check[aria-invalid='true'],
+  input.ak-radio[aria-invalid='true'] { @apply border-danger-strong; }
+
+  input.ak-switch { @apply h-5 w-10 rounded-full; }
+  input.ak-switch::before {
+    content: '';
+    @apply absolute top-1/2 left-[3px] size-3.5 -translate-y-1/2 rounded-full bg-fg-secondary transition-[left,background-color] duration-fast ease-decelerate;
+  }
+  input.ak-switch:checked { @apply border-transparent bg-brand hover:bg-brand-hover; }
+  input.ak-switch:checked::before { @apply left-[calc(100%-17px)] bg-on-brand; }
+  input.ak-switch:disabled::before { @apply bg-fg-disabled; }
+
+  .ak-choice { @apply inline-flex cursor-pointer items-start gap-2 text-body-1 text-primary; }
+  .ak-choice:has(:disabled) { @apply cursor-not-allowed text-disabled; }
+  .ak-choice-description { @apply block text-caption-1 text-tertiary; }
+  .ak-choice-list,
+  .ak-choice-list > div { @apply flex flex-col gap-2; }
+  .ak-choice-list label { @apply inline-flex cursor-pointer items-start gap-2 text-body-1 text-primary; }
+
+  /* ---- Table ------------------------------------------------------------ */
+  .ak-table-wrap { @apply w-full overflow-x-auto rounded-card border border-line-subtle bg-surface; }
+  .ak-table { @apply w-full border-collapse text-left text-body-1; }
+  .ak-table caption { @apply px-4 py-3 text-left text-subtitle-2 text-primary; }
+  .ak-table th { @apply h-10 border-b border-line-subtle bg-surface-secondary px-4 text-caption-1-strong whitespace-nowrap text-secondary; }
+  .ak-table td { @apply h-11 border-b border-line-subtle px-4 text-primary; }
+  .ak-table tbody tr:last-child td { @apply border-b-0; }
+  .ak-table tbody tr:hover td { @apply bg-surface-hover; }
+  .ak-table .ak-num { @apply text-right tabular-nums; }
+
+  /* ---- Navigation ------------------------------------------------------- */
+  .ak-breadcrumb ol { @apply m-0 flex min-w-0 list-none flex-wrap items-center gap-0.5 p-0 text-body-1; }
+  .ak-breadcrumb li { @apply flex min-w-0 items-center; }
+  .ak-breadcrumb a { @apply truncate rounded-sm px-1 py-0.5 text-secondary no-underline focus-ring hover:bg-subtle-hover hover:text-primary; }
+  .ak-breadcrumb [aria-current='page'] { @apply truncate px-1 py-0.5 font-semibold text-primary; }
+  .ak-breadcrumb svg { @apply size-3.5 text-tertiary; }
+
+  .ak-pagination { @apply flex flex-col items-center gap-3 sm:flex-row sm:justify-between; }
+  .ak-pagination-summary { @apply text-body-1 text-secondary; }
+  .ak-pagination ul { @apply m-0 flex list-none items-center gap-1 p-0; }
+  .ak-page { @apply inline-flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-body-1 text-primary tabular-nums no-underline transition-colors duration-faster focus-ring hover:bg-subtle-hover; }
+  .ak-page > svg { @apply size-4 text-secondary; }
+  .ak-page[aria-current='page'] { @apply bg-brand-subtle font-semibold text-brand ring-1 ring-brand-stroke ring-inset; }
+  .ak-page[aria-disabled='true'] { @apply pointer-events-none text-disabled; }
+  .ak-page[aria-disabled='true'] > svg { @apply text-disabled; }
+  .ak-page-gap { @apply inline-flex h-8 min-w-6 items-center justify-center text-tertiary; }
+
+  .ak-tabs { @apply flex shrink-0 overflow-x-auto border-b border-line-subtle [scrollbar-width:none]; }
+  .ak-tab { @apply relative inline-flex h-10 shrink-0 items-center gap-2 rounded-md px-3 text-body-1 whitespace-nowrap text-secondary no-underline transition-colors duration-faster focus-ring-inset hover:bg-subtle-hover hover:text-primary; }
+  .ak-tab::after { content: ''; @apply absolute inset-x-3 bottom-0 h-[3px] rounded-full bg-transparent transition-colors duration-fast; }
+  .ak-tab:hover::after { @apply bg-line; }
+  .ak-tab[aria-current='page'],
+  .ak-tab[aria-selected='true'] { @apply font-semibold text-primary; }
+  .ak-tab[aria-current='page']::after,
+  .ak-tab[aria-selected='true']::after { @apply bg-brand; }
+  .ak-tab > svg { @apply size-4 shrink-0; }
+
+  .ak-nav { @apply flex flex-col gap-4; }
+  .ak-nav-title { @apply px-3 pb-1 text-caption-1-strong tracking-wide text-tertiary uppercase; }
+  .ak-nav ul { @apply m-0 flex list-none flex-col gap-0.5 p-0; }
+  .ak-nav-item { @apply relative flex min-h-9 w-full items-center gap-3 rounded-md px-3 text-body-1 text-secondary no-underline transition-colors duration-faster focus-ring-inset hover:bg-subtle-hover hover:text-primary; }
+  .ak-nav-item > svg { @apply size-5 shrink-0; }
+  .ak-nav-item[aria-current='page'] { @apply bg-surface-selected font-semibold text-primary; }
+  .ak-nav-item[aria-current='page']::before { content: ''; @apply absolute inset-y-2 left-0 w-[3px] rounded-full bg-brand; }
+  .ak-nav-item[aria-current='page'] > svg { @apply text-brand; }
+
+  .ak-link { @apply rounded-sm text-link underline underline-offset-2 focus-ring hover:text-link-hover; }
+
+  /* ---- Theme switcher (segmented) --------------------------------------- */
+  .ak-segmented { @apply inline-flex items-center gap-0.5 rounded-control border border-line bg-surface-secondary p-0.5; }
+  .ak-segmented button { @apply inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-sm border-0 bg-transparent px-2 text-caption-1 font-semibold text-secondary focus-ring hover:text-primary; }
+  .ak-segmented button > svg { @apply size-4; }
+  .ak-segmented button[aria-pressed='true'] { @apply bg-surface text-primary shadow-elevation-2 hc:outline hc:outline-1 hc:outline-line-strong; }
+
+  /* ---- Data display ----------------------------------------------------- */
+  .ak-avatar { @apply relative inline-flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-caption-1 font-semibold select-none; }
+  .ak-avatar > img { @apply size-full object-cover; }
+  .ak-avatar-sm { @apply size-6 text-caption-2; }
+  .ak-avatar-lg { @apply size-12 text-body-1; }
+  .ak-avatar-xl { @apply size-16 text-title-3; }
+  .ak-avatar-square { @apply rounded-md; }
+
+  .ak-divider { @apply my-4 h-px w-full border-0 bg-line-subtle; }
+  .ak-kbd { @apply inline-flex h-5 min-w-5 items-center justify-center rounded-sm border border-b-2 border-line bg-surface-secondary px-1 font-mono text-caption-2 text-secondary; }
+  .ak-skeleton { @apply skeleton rounded-sm; }
+
+  .ak-progress { @apply flex flex-col gap-1; }
+  .ak-progress-head { @apply flex items-baseline justify-between gap-2 text-body-1 text-primary; }
+  .ak-progress-value { @apply text-caption-1 text-secondary tabular-nums; }
+  .ak-progress-track { @apply relative h-1 w-full overflow-hidden rounded-full bg-surface-selected hc:border hc:border-line; }
+  .ak-progress-fill { @apply h-full rounded-full bg-brand transition-[width] duration-slow ease-decelerate; }
+  .ak-progress-success .ak-progress-fill { @apply bg-success-strong; }
+  .ak-progress-warning .ak-progress-fill { @apply bg-warning-strong; }
+  .ak-progress-danger .ak-progress-fill { @apply bg-danger-strong; }
+
+  .ak-empty { @apply mx-auto flex max-w-md flex-col items-center gap-3 py-10 text-center; }
+  .ak-empty-icon { @apply flex size-14 items-center justify-center rounded-full bg-brand-subtle text-brand; }
+  .ak-empty-icon > svg { @apply size-7; }
+  .ak-empty-title { @apply text-subtitle-2 text-primary; }
+  .ak-empty-description { @apply text-body-1 text-secondary; }
+  .ak-empty-actions { @apply mt-2 flex flex-wrap justify-center gap-2; }
+
+  /* ---- Dialog (native <dialog>) ----------------------------------------- */
+  .ak-dialog {
+    @apply m-auto w-[calc(100%-2rem)] max-w-lg rounded-overlay border border-line-subtle bg-surface p-0 text-primary shadow-elevation-28 hc:border-line;
+  }
+  .ak-dialog[open] { animation: ak-scale-in var(--ak-duration-normal) var(--ak-ease-decelerate); }
+  .ak-dialog::backdrop { background: var(--ak-color-backdrop); }
+  .ak-dialog-header { @apply flex items-start gap-3 px-6 pt-6; }
+  .ak-dialog-title { @apply min-w-0 flex-1 text-subtitle-1 text-primary; }
+  .ak-dialog-body { @apply px-6 py-4 text-body-1 text-secondary; }
+  .ak-dialog-footer { @apply flex flex-wrap justify-end gap-2 px-6 pb-6; }
+
+  /* ---- Icon ------------------------------------------------------------- */
+  .ak-icon { @apply inline-block shrink-0; }
+}
+
+:root {
+  --ak-django-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --ak-django-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+}

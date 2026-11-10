@@ -1,0 +1,9 @@
+{% load akwapui %}<div class="{{ classes }}"{{ attrs }}>
+  {% ak_icon icon class="ak-alert-icon" %}
+  <span class="sr-only">{{ intent_label }}:</span>
+  <div class="ak-alert-content">
+    {% if title %}<p class="ak-alert-title">{{ title }}</p>{% endif %}
+    {% if content %}<div class="ak-alert-body">{{ content }}</div>{% endif %}
+  </div>
+  {% if dismissible %}<button type="button" class="ak-alert-dismiss" data-ak-dismiss aria-label="Dismiss">{% ak_icon "close" %}</button>{% endif %}
+</div>

@@ -1,0 +1,3 @@
+{% load akwapui %}<nav class="ak-tabs" aria-label="{{ label }}">{% for item in items %}
+  <a class="ak-tab" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{% if item.icon %}{% ak_icon item.icon %}{% endif %}{{ item.label }}{% if item.badge is not None %} {% ak_badge item.badge size="sm" %}{% endif %}</a>{% endfor %}
+</nav>

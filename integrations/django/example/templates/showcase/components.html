@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Components{% endblock %}
+{% block content %}
+<div class="flex flex-col gap-6">
+  <div>
+    <h1 class="text-title-2">Components</h1>
+    <p class="text-body-1 text-secondary">Each block below is one template tag. View the template to copy it.</p>
+  </div>
+
+  {% ak_tabs items=tabs label="Component groups" %}
+
+  {% ak_card title="Buttons" %}
+    <div class="flex flex-wrap items-center gap-2">
+      {% ak_button "Primary" variant="primary" %}
+      {% ak_button "Secondary" %}
+      {% ak_button "Outline" variant="outline" %}
+      {% ak_button "Subtle" variant="subtle" %}
+      {% ak_button "Transparent" variant="transparent" %}
+      {% ak_button "Delete" variant="danger" icon="delete" %}
+      {% ak_button "Link" variant="link" %}
+      {% ak_button "Settings" icon="settings" icon_only=True %}
+      {% ak_button "Saving" variant="primary" loading=True loading_text="Saving…" %}
+      {% ak_button "Disabled" disabled=True %}
+      {% ak_button "As a link" href="/form/" icon_end="forward" %}
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-2">
+      {% ak_button "Small" size="sm" %}{% ak_button "Medium" %}{% ak_button "Large" size="lg" variant="primary" %}
+    </div>
+  {% endak_card %}
+
+  {% ak_card title="Badges and avatars" %}
+    <div class="flex flex-wrap items-center gap-2">
+      {% ak_badge "Brand" color="brand" %}{% ak_badge "Neutral" %}{% ak_badge "Paid" color="success" dot=True %}
+      {% ak_badge "Pending" color="warning" icon="pending" %}{% ak_badge "Failed" color="danger" appearance="filled" %}
+      {% ak_badge "Info" color="info" appearance="outline" %}
+    </div>
+    <div class="mt-3 flex flex-wrap gap-2">{% for c in accents %}{% ak_badge c color=c %}{% endfor %}</div>
+    <div class="mt-4 flex items-center gap-2">
+      {% ak_avatar "Ada Mensah" size="sm" %}{% ak_avatar "Kofi Boateng" %}{% ak_avatar "Lina Haddad" size="lg" %}{% ak_avatar "Mei Tan" size="xl" shape="square" %}
+    </div>
+  {% endak_card %}
+
+  {% ak_card title="Feedback" %}
+    <div class="flex flex-col gap-3">
+      {% ak_alert title="Heads up" %}A new version is available.{% endak_alert %}
+      {% ak_alert intent="success" title="Saved" %}Your changes are live.{% endak_alert %}
+      {% ak_alert intent="warning" dismissible=True %}Your trial ends in 3 days.{% endak_alert %}
+      {% ak_alert intent="danger" title="Payment failed" %}Check your card details and try again.{% endak_alert %}
+      <div class="flex items-center gap-6">{% ak_spinner %}{% ak_spinner size="sm" label="Loading orders…" %}</div>
+      <div class="flex gap-2"><span class="ak-skeleton h-4 w-40"></span><span class="ak-skeleton h-4 w-24"></span></div>
+      <p class="text-body-1 text-secondary">Press <kbd class="ak-kbd">Ctrl</kbd> <kbd class="ak-kbd">K</kbd> to search.</p>
+    </div>
+  {% endak_card %}
+
+  {% ak_card title="Empty state" padding="sm" %}
+    {% ak_empty title="No invoices yet" description="Invoices appear here once a customer pays." %}
+      {% ak_button "Create invoice" variant="primary" icon="add" %}
+    {% endak_empty %}
+  {% endak_card %}
+
+  {% ak_card title="Plain classes" subtitle="No tags needed: the .ak-* classes work in any HTML" %}
+    <div class="flex flex-wrap gap-2">
+      <button type="button" class="ak-btn ak-btn-primary">Primary</button>
+      <a class="ak-btn ak-btn-outline" href="#">Outline link</a>
+      <span class="ak-badge ak-badge-teal">Teal</span>
+      <label class="ak-choice"><input type="checkbox" class="ak-switch" role="switch" checked> Notifications</label>
+    </div>
+  {% endak_card %}
+</div>
+{% endblock %}

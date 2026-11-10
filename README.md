@@ -24,6 +24,7 @@ Open http://localhost:5173 for the example site, `/docs` for the documentation, 
 | `npm run dev` | Development server |
 | `npm run build` | Type-check and build the site |
 | `npm run build:lib` | Build the reusable library into `dist-lib/` |
+| `npm run build:django` | Regenerate the Django package's CSS and icons |
 | `npm run typecheck` | Type-check everything |
 | `npm test` | Unit and component tests |
 | `npm run test:e2e` | End-to-end, responsive and accessibility tests |
@@ -32,6 +33,7 @@ Open http://localhost:5173 for the example site, `/docs` for the documentation, 
 
 - [Design system](docs/DESIGN_SYSTEM.md)
 - [Installation](docs/INSTALLATION.md), including use in another app
+- [Django](docs/DJANGO.md): templates, forms and Vue islands in a Django project
 - [Theme guide](docs/THEME_GUIDE.md)
 - [Component guide](docs/COMPONENT_GUIDE.md)
 - [Accessibility](docs/ACCESSIBILITY.md)

@@ -24,6 +24,10 @@ npm run dev          # http://localhost:5173
 
 The end-to-end tests build the site and serve it on port 4173. If Playwright's own browser is not installed, run `npx playwright install chromium`, or point at an existing Chromium with `PW_CHROMIUM=/path/to/chromium npm run test:e2e`.
 
+## Use AkwapUI in a Django project
+
+See the [Django guide](DJANGO.md).
+
 ## Use AkwapUI in another Vue app
 
 ### Option A: the library build

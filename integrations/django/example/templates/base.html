@@ -1,0 +1,29 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AkwapUI{% endblock %} · Django example</title>
+  <link rel="icon" href="data:,">
+  {% ak_head %}
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body class="min-h-screen bg-background font-sans text-primary antialiased">
+  <a href="#main" class="sr-only-focusable fixed top-2 left-2 z-50 rounded-control bg-surface px-3 py-2 shadow-elevation-8">Skip to content</a>
+  <header class="sticky top-0 z-sticky flex h-14 items-center gap-3 border-b border-line-subtle bg-surface px-4">
+    <span class="flex size-8 items-center justify-center rounded-md bg-brand text-on-brand">{% ak_icon "new" size=18 %}</span>
+    <span class="text-subtitle-2">AkwapUI <span class="font-normal text-tertiary">for Django</span></span>
+    <div class="ml-auto">{% ak_theme_switcher labels=False %}</div>
+  </header>
+  <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 md:flex-row md:px-6">
+    <aside class="md:w-56 md:shrink-0">
+      {% ak_nav nav_sections %}
+    </aside>
+    <main id="main" class="min-w-0 flex-1">
+      {% ak_messages toast=True %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  {% ak_scripts %}
+</body>
+</html>

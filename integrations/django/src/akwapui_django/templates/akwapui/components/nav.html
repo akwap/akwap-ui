@@ -1,0 +1,8 @@
+{% load akwapui %}<nav class="ak-nav" aria-label="{{ label }}">{% for section in sections %}
+  <div>
+    {% if section.title %}<h3 class="ak-nav-title">{{ section.title }}</h3>{% endif %}
+    <ul>{% for item in section.items %}
+      <li><a class="ak-nav-item" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{% if item.icon %}{% ak_icon item.icon %}{% endif %}<span class="min-w-0 flex-1 truncate">{{ item.label }}</span>{% if item.badge is not None %}{% ak_badge item.badge color="brand" size="sm" %}{% endif %}</a></li>{% endfor %}
+    </ul>
+  </div>{% endfor %}
+</nav>

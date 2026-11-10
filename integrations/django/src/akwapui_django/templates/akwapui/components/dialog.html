@@ -1,0 +1,7 @@
+{% load akwapui %}<dialog id="{{ id }}" class="{{ classes }}" aria-labelledby="{{ id }}-title"{{ attrs }}>
+  <div class="ak-dialog-header">
+    <h2 id="{{ id }}-title" class="ak-dialog-title">{{ title }}</h2>
+    <button type="button" class="ak-btn ak-btn-subtle ak-btn-sm ak-btn-icon -mt-1 -mr-2" data-ak-dialog-close>{% ak_icon "close" %}<span class="sr-only">{{ close_label }}</span></button>
+  </div>
+  {{ content }}
+</dialog>

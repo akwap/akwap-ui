@@ -1,0 +1,1 @@
+<span class="inline-flex items-center gap-2"{% if label %} role="status"{% else %} role="status" aria-label="Loading"{% endif %}{{ attrs }}><span class="{{ classes }}" aria-hidden="true"></span>{% if label %}<span class="text-body-1 text-secondary">{{ label }}</span>{% endif %}</span>

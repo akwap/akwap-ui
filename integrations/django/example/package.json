@@ -1,0 +1,20 @@
+{
+  "name": "akwapui-django-example",
+  "private": true,
+  "scripts": {
+    "css": "tailwindcss -i assets/css/app.css -o static/css/app.css --minify",
+    "css:watch": "tailwindcss -i assets/css/app.css -o static/css/app.css --watch",
+    "islands": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "vite": "^8.3.6"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  }
+}
