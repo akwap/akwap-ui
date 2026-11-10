@@ -20,14 +20,15 @@ const props = withDefaults(
   }>(),
   { confirmLabel: 'Confirm', cancelLabel: 'Cancel', intent: 'primary' },
 )
-const emit = defineEmits<{ 'update:open': [open: boolean]; confirm: []; cancel: [] }>()
+// `onConfirm` is a prop (so it can be awaited); `@confirm` in a template binds
+// to the same prop. Do not also emit 'confirm', or the handler runs twice.
+const emit = defineEmits<{ 'update:open': [open: boolean]; cancel: [] }>()
 const busy = ref(false)
 
 async function confirm() {
   busy.value = true
   try {
     await props.onConfirm?.()
-    emit('confirm')
     emit('update:open', false)
   } finally {
     busy.value = false

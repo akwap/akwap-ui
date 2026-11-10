@@ -4,7 +4,7 @@
  * or install everything globally:
  *   app.use(AkwapUI)
  */
-import type { App } from 'vue'
+import type { App, Component, Plugin } from 'vue'
 import '../styles/tailwind.css'
 
 import AkLiveRegion from '@/components/shared/AkLiveRegion.vue'
@@ -141,7 +141,8 @@ export {
   AkTooltip,
 }
 
-export const components = {
+/** Every component by registration name (typed loosely to keep declarations small). */
+export const components: Record<string, Component> = {
   AkLiveRegion,
   AkLogo,
   AkSkipLink,
@@ -229,8 +230,10 @@ export { useForm } from '@/composables/useForm'
 export { rules, validate, passwordStrength } from '@/utils/validation'
 
 /** Vue plugin: registers every Ak* component globally. */
-export default {
+const AkwapUI: Plugin = {
   install(app: App) {
     for (const [name, component] of Object.entries(components)) app.component(name, component)
   },
 }
+
+export default AkwapUI

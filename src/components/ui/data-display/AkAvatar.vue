@@ -21,12 +21,12 @@ const props = withDefaults(
 )
 const failed = ref(false)
 const palette = [
-  'bg-[color-mix(in_oklab,var(--ak-color-data-1)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-1)_80%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-2)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-2)_80%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-3)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-3)_80%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-4)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-4)_80%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-5)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-5)_80%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-6)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-6)_80%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-1)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-1)_45%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-2)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-2)_45%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-3)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-3)_45%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-4)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-4)_45%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-5)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-5)_45%,var(--ak-color-text-primary))]',
+  'bg-[color-mix(in_oklab,var(--ak-color-data-6)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-6)_45%,var(--ak-color-text-primary))]',
 ]
 const colorCls = computed(() => palette[[...props.name].reduce((a, c) => a + c.charCodeAt(0), 0) % palette.length])
 const fontSize = computed(() => (props.size <= 24 ? 'text-caption-2' : props.size <= 36 ? 'text-caption-1' : props.size <= 56 ? 'text-body-1' : 'text-title-3'))

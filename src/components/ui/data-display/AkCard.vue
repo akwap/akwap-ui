@@ -38,8 +38,7 @@ const look = computed(
 <template>
   <component
     :is="tag"
-    :to="to"
-    :href="href"
+    v-bind="to ? { to } : href ? { href } : {}"
     class="flex min-w-0 flex-col rounded-card text-left"
     :class="[
       look,

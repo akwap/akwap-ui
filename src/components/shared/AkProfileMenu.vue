@@ -40,10 +40,11 @@ const items = computed<MenuItem[]>(() => [
         v-bind="attrs"
         type="button"
         class="flex items-center gap-2 rounded-control p-1 hover:bg-subtle-hover focus-ring lg:pr-2"
-        :aria-label="`Account menu for ${session.user.name}`"
         data-testid="profile-menu"
       >
         <AkAvatar :name="session.user.name" :size="28" presence="available" decorative />
+        <span class="sr-only">Account menu: </span>
+        <span class="sr-only lg:hidden">{{ session.user.name }}</span>
         <span class="hidden min-w-0 text-left lg:block">
           <span class="block truncate text-caption-1-strong text-primary">{{ session.user.name }}</span>
           <span class="block truncate text-caption-2 text-tertiary">{{ session.role }}</span>

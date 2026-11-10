@@ -35,6 +35,9 @@ const props = withDefaults(
 const isInactive = computed(() => props.disabled || props.loading)
 
 const tag = computed(() => (props.to ? RouterLink : props.href ? 'a' : 'button'))
+// Only pass `href`/`to` to the element that owns them: an explicit
+// `href: undefined` would override the href RouterLink renders.
+const linkProps = computed(() => (props.to ? { to: props.to } : props.href && !props.disabled ? { href: props.href } : {}))
 
 const sizeClasses: Record<ButtonSize, string> = {
   sm: 'h-control-sm min-w-16 px-2 gap-1 text-caption-1 font-semibold [&_svg]:size-4',
@@ -82,8 +85,7 @@ const classes = computed(() => [
   <component
     :is="tag"
     :type="tag === 'button' ? type : undefined"
-    :href="tag === 'a' && !disabled ? href : undefined"
-    :to="to"
+    v-bind="linkProps"
     :disabled="tag === 'button' ? disabled : undefined"
     :aria-disabled="(tag !== 'button' && disabled) || loading ? 'true' : undefined"
     :aria-busy="loading ? 'true' : undefined"
