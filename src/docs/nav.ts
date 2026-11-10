@@ -52,6 +52,7 @@ export const docSections: DocSection[] = [
       { label: 'File upload', slug: 'file-upload' },
       { label: 'Cards', slug: 'card' },
       { label: 'Tables', slug: 'table' },
+      { label: 'Icons', slug: 'icon' },
       { label: 'Badges', slug: 'badge' },
       { label: 'Avatars', slug: 'avatar' },
       { label: 'Alerts', slug: 'alert' },

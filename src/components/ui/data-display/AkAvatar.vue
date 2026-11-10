@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { initials } from '@/utils/format'
+import { accentClasses, accentFor, type AccentColor } from '../accent'
 
 /**
  * AkAvatar — person or entity image with initials fallback and optional
- * presence badge. Initial colours are derived from the name so a person
+ * presence badge. Initials use the accent palette; the colour is derived from the name so a person
  * always gets the same colour.
  */
 const props = withDefaults(
@@ -16,19 +17,16 @@ const props = withDefaults(
     presence?: 'available' | 'away' | 'busy' | 'offline'
     /** Decorative avatars next to a visible name should be hidden from AT. */
     decorative?: boolean
+    /** Initials colour. Defaults to an accent derived from the name. */
+    color?: AccentColor
   }>(),
   { size: 32, shape: 'circular' },
 )
 const failed = ref(false)
-const palette = [
-  'bg-[color-mix(in_oklab,var(--ak-color-data-1)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-1)_45%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-2)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-2)_45%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-3)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-3)_45%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-4)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-4)_45%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-5)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-5)_45%,var(--ak-color-text-primary))]',
-  'bg-[color-mix(in_oklab,var(--ak-color-data-6)_18%,var(--ak-color-surface))] text-[color-mix(in_oklab,var(--ak-color-data-6)_45%,var(--ak-color-text-primary))]',
-]
-const colorCls = computed(() => palette[[...props.name].reduce((a, c) => a + c.charCodeAt(0), 0) % palette.length])
+const colorCls = computed(() => {
+  const c = accentClasses[props.color ?? accentFor(props.name)]
+  return `${c.background} ${c.text}`
+})
 const fontSize = computed(() => (props.size <= 24 ? 'text-caption-2' : props.size <= 36 ? 'text-caption-1' : props.size <= 56 ? 'text-body-1' : 'text-title-3'))
 const presenceCls = computed(
   () => ({ available: 'bg-success-strong', away: 'bg-warning-strong', busy: 'bg-danger-strong', offline: 'bg-surface border-2 border-fg-tertiary' })[props.presence ?? 'offline'],

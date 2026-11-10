@@ -147,3 +147,19 @@ test.describe('dialogs and data', () => {
     expect(text).toContain('<AkButton')
   })
 })
+
+test.describe('icons', () => {
+  test('full icon library loads on demand, searches and copies', async ({ page, context, errors }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+    await page.goto('/docs/foundations/icons')
+    await page.locator('h1').waitFor()
+    await page.getByRole('tab', { name: 'All Lucide icons' }).click()
+    const search = page.getByLabel('Search all Lucide icons')
+    await expect(page.getByRole('button', { name: /^Copy import for / }).first()).toBeVisible()
+    await search.fill('alarm check')
+    await expect(page.getByRole('button', { name: /^Copy import for / })).toHaveCount(1)
+    await page.getByRole('button', { name: 'Copy import for AlarmClockCheck' }).click()
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("import { AlarmClockCheck } from '@lucide/vue'")
+    expect(errors).toEqual([])
+  })
+})

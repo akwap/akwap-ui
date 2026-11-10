@@ -1,5 +1,6 @@
 import ColorPalette from '../foundations/ColorPalette.vue'
 import SemanticColors from '../foundations/SemanticColors.vue'
+import AccentColors from '../foundations/AccentColors.vue'
 import TypeRamp from '../foundations/TypeRamp.vue'
 import SpacingScale from '../foundations/SpacingScale.vue'
 import RadiusScale from '../foundations/RadiusScale.vue'
@@ -17,10 +18,21 @@ export const foundations: DocPages = {
       { t: 'h2', id: 'semantic', text: 'Semantic roles' },
       { t: 'p', text: 'Values and contrast ratios below are measured live in the current theme. Use the theme switcher in the header to compare light, dark and high contrast.' },
       { t: 'component', is: SemanticColors },
+      { t: 'h2', id: 'accent', text: 'Accent colours' },
+      { t: 'p', text: 'Twelve accent hues are for categories, tags, avatars, labels and illustrations: anything that needs to be told apart but carries no status meaning. Each hue has four roles that adapt to the theme: `text-<hue>` for text and icons, `bg-<hue>-background` for tints, `border-<hue>-border`, and `bg-<hue>-strong` for fills with `text-on-accent`. Contrast is measured live below.' },
+      { t: 'component', is: AccentColors },
+      { t: 'code', lang: 'vue', code: `<AkBadge color="teal">Finance</AkBadge>
+<AkAvatar name="Wanjiru Kamau" color="purple" />
+<span class="rounded-sm border border-indigo-border bg-indigo-background px-2 text-indigo">Beta</span>
+
+<script setup lang="ts">
+import { accentFor } from '@/design-system'
+const color = accentFor(project.id) // the same project always gets the same hue
+</script>` },
       { t: 'h2', id: 'palettes', text: 'Global palettes' },
       { t: 'component', is: ColorPalette },
       { t: 'h2', id: 'rules', text: 'Rules' },
-      { t: 'list', items: ['Text on surfaces must reach 4.5:1 (3:1 for 18px+ or 14px bold). Every role above is tuned for this in all three themes.', 'Never communicate state with colour alone: pair status colours with an icon or text.', 'Brand colour marks primary actions, selection and focus. Do not use it for large decorative areas.', 'Charts use the dedicated data palette, never status colours.'] },
+      { t: 'list', items: ['Text on surfaces must reach 4.5:1 (3:1 for 18px+ or 14px bold). Every role above is tuned for this in all three themes.', 'Never communicate state with colour alone: pair status colours with an icon or text.', 'Brand colour marks primary actions, selection and focus. Do not use it for large decorative areas.', 'Charts use the dedicated data palette, never status colours.', 'Accent colours mean “this is a different category”, never “good” or “bad”: use the status roles for that.', 'Assign accents from a stable key (`accentFor(id)`) so an item keeps its colour across screens.'] },
       { t: 'dodont', dos: ['Use `text-secondary` for supporting text.', 'Use `bg-danger-background` with an icon for errors.'], donts: ['Use `text-tertiary` for body text.', 'Put brand text on brand-subtle backgrounds at small sizes without checking contrast.'] },
     ],
   },
@@ -90,19 +102,26 @@ export const foundations: DocPages = {
   },
   icons: {
     title: 'Icons',
-    lead: 'AkwapUI uses Lucide icons with a 1.75 stroke weight for a lighter, balanced look. Click an icon to copy its import.',
+    lead: 'AkwapUI uses Lucide icons (ISC licence) at a 1.75 stroke weight. The AkwapUI set gives each common meaning one agreed icon; the full library has over 2,000 more. Click an icon to copy its code.',
     blocks: [
       { t: 'component', is: IconGallery },
       { t: 'h2', id: 'usage', text: 'Usage' },
-      { t: 'code', code: `<script setup lang="ts">
-import { Download } from '@lucide/vue'
+      { t: 'p', text: 'Use `AkIcon` with a semantic name from the AkwapUI set, so the same action looks the same everywhere. For anything else, import the Lucide icon by name and pass it to `icon`. Named imports keep bundles small: only the icons you use are shipped.' },
+      { t: 'code', lang: 'vue', code: `<script setup lang="ts">
+import { Rocket } from '@lucide/vue'
+import { AkButton, AkIcon, icons } from '@/design-system'
 </script>
 
 <template>
-  <AkButton :icon="Download">Export</AkButton>
-  <Download class="size-4 text-secondary" aria-hidden="true" />
+  <AkIcon name="delete" />                          <!-- decorative, 20px -->
+  <AkIcon name="warning" color="warning" label="Warning" />  <!-- announced -->
+  <AkIcon :icon="Rocket" size="lg" color="purple" />
+  <AkButton :icon="icons.download">Export</AkButton>
 </template>` },
-      { t: 'list', items: ['Sizes: 16px inline with body text, 20px in buttons and navigation, 24px for standalone icons.', 'Icons next to text are decorative: add `aria-hidden="true"`.', 'Icon-only controls need an accessible name (`aria-label` or a label tooltip).'] },
+      { t: 'table', caption: 'Icon sizes', head: ['Size', 'Pixels', 'Use for'], rows: [['`xs`', '12', 'Inside small badges'], ['`sm`', '16', 'Inline with body text, small buttons'], ['`md`', '20', 'Buttons, inputs, navigation (default)'], ['`lg`', '24', 'Standalone icons, large buttons'], ['`xl`', '32', 'Feature lists, cards'], ['`2xl`', '48', 'Empty states and illustrations']] },
+      { t: 'h2', id: 'rules', text: 'Rules' },
+      { t: 'list', items: ['Icons next to visible text are decorative. `AkIcon` hides them from screen readers unless you pass `label`.', 'Icon-only controls need an accessible name: `aria-label` on the button, or a label tooltip.', 'Use the semantic name when one exists (`delete`, not a random bin icon), so meaning stays consistent.', 'Colour an icon with a role (`color="danger"`) only when the colour adds meaning, and never rely on colour alone.', 'Keep one stroke weight per screen; do not mix outline and filled styles.'] },
+      { t: 'links', items: [{ label: 'Icon component', to: '/docs/components/icon', description: 'Props, sizes, colours and accessibility for AkIcon.' }] },
     ],
   },
   motion: {

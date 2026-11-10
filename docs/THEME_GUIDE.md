@@ -73,7 +73,25 @@ The playground (`/docs/playground`) lets you try a brand colour and radius in an
 | Surfaces | `background`, `background-secondary`, `surface`, `surface-secondary`, `surface-tertiary`, `surface-hover`, `surface-pressed`, `surface-selected`, `surface-inverse`, `surface-overlay`, `backdrop` |
 | Text | `text-primary`, `text-secondary`, `text-tertiary`, `text-disabled`, `text-inverse`, `text-link`, `text-link-hover` |
 | Borders | `border`, `border-subtle`, `border-strong`, `border-hover`, `border-disabled`, `border-focus`, `border-focus-inner` |
-| Status | `success`, `warning`, `danger`, `info`, each with `-background`, `-border` and `-strong` |
+| Status | `success`, `warning`, `danger`, `info`, each with `-background`, `-border` and `-strong`; `on-status` for text on success, warning and info fills |
+| Accent | `red`, `orange`, `amber`, `lime`, `green`, `teal`, `cyan`, `blue`, `indigo`, `purple`, `magenta`, `pink`, each with `-strong`, `-background` and `-border`; plus `on-accent` |
 | Data | `data-1` … `data-6`, `chart-grid` |
 
 All are prefixed `--ak-color-`, and each has a Tailwind utility (`bg-surface`, `text-secondary`, `border-line-subtle`, `text-danger`, `bg-success-background`…).
+
+## Accent colours
+
+Twelve accent hues are for categories, tags, avatars and labels: things that need to be told apart but carry no status meaning.
+
+- Raw ramps: `--ak-palette-<hue>-10` (darkest) to `--ak-palette-<hue>-80` (lightest). They are generated in OKLCH with the same lightness at each step, so every hue has the same visual weight.
+- Roles per theme: `--ak-color-<hue>` (text and icons), `-strong` (fills), `-background` (tints) and `-border`. Text on a fill uses `--ak-color-on-accent`.
+- Utilities: `text-teal`, `bg-teal-strong text-on-accent`, `bg-teal-background`, `border-teal-border`.
+- Contrast: text reaches at least 5.6:1 on its tint and on surfaces, and `on-accent` text at least 5.6:1 on fills, in both light and dark. The Colors foundation page measures this live.
+- In code: `ACCENT_COLORS`, `accentClasses`, and `accentFor(key)`, which always returns the same hue for the same key.
+
+```vue
+<AkBadge :color="accentFor(team.id)">{{ team.name }}</AkBadge>
+<AkAvatar name="Wanjiru Kamau" color="purple" />
+```
+
+Do not use accents to mean good or bad; use the status roles for that.

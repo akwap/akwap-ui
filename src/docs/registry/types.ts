@@ -9,7 +9,7 @@ export interface ExampleRef {
 
 export interface ApiTable {
   title: string
-  kind?: 'Props' | 'Events' | 'Slots'
+  kind?: 'Props' | 'Events' | 'Slots' | 'Exports'
   rows: PropRow[]
 }
 

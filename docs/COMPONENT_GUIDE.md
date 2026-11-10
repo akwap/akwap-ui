@@ -9,7 +9,8 @@ Every component has a documentation page at `/docs/components/<name>` with the s
 - **v-model.** Form controls use `v-model` (`modelValue` + `update:modelValue`). Overlays use `v-model:open`.
 - **Fields.** Put inputs inside `<AkField label="…" helper="…" :error="…">`. The field supplies id, label association, `aria-describedby`, `aria-invalid` and `required` to the control inside it.
 - **Links.** `AkButton`, `AkCard` and `AkLink` render a router link with `to`, an anchor with `href`, and a button otherwise.
-- **Icons.** Pass a Lucide component to `icon`; icons are decorative unless the button is icon-only, which requires `aria-label`.
+- **Icons.** Use `<AkIcon name="delete" />` with a semantic name, or pass any Lucide component to `icon` props (`:icon="icons.download"`). Icons are decorative unless given a `label`; icon-only buttons need an `aria-label`.
+- **Colours.** Role colours (`success`, `warning`, `danger`, `info`, `brand`) carry meaning. The 12 accent colours (`teal`, `purple`…) are for categories; `AkBadge`, `AkAvatar` and `AkIcon` accept them through `color`.
 - **Tokens only.** Components use semantic utilities (`bg-surface`, `text-secondary`, `rounded-control`), never raw colours.
 
 ## Catalogue
@@ -23,6 +24,7 @@ Every component has a documentation page at `/docs/components/<name>` with the s
 | Files | `AkFileUpload`, `AkFileAttachment` | file-upload |
 | Containers | `AkCard`, `AkStatCard`, `AkDivider` | card |
 | Data | `AkDataTable`, `AkDescriptionList`, `AkKeyValue`, `AkList`, `AkTimeline`, `AkActivityFeed` | table, disclosure |
+| Icons | `AkIcon` + the semantic `icons` set (84 names) and any Lucide icon | icon |
 | Identity and status | `AkBadge`, `AkAvatar`, `AkAvatarGroup`, `AkStatusIndicator`, `AkKbd` | badge, avatar |
 | Feedback | `AkAlert`, `AkToaster` + `useToast`, `AkProgressBar`, `AkSpinner`, `AkSkeleton`, `AkStepper`, `AkEmptyState` | alert, toast, progress, empty-state |
 | Overlays | `AkDialog`, `AkConfirmDialog`, `AkDrawer`, `AkMenu`, `AkPopover`, `AkTooltip`, `AkCommandPalette` | modal, drawer, dropdown, tooltip |
@@ -30,6 +32,8 @@ Every component has a documentation page at `/docs/components/<name>` with the s
 | Disclosure | `AkAccordion`, `AkAccordionItem` | disclosure |
 | Charts | `AkLineChart`, `AkBarChart`, `AkDonutChart`, `AkSparkline`, `AkChartCard`, `AkChartLegend` | charts |
 | App pieces | `AkThemeSwitcher`, `AkLogo` | — |
+
+Helpers for colour and icons: `ACCENT_COLORS`, `accentClasses`, `accentFor`, `icons`, `iconGroups`.
 
 Composables: `useTheme`, `useBrand`, `useToast`, `useForm`, `useAnnouncer`, `useFocusTrap`, `useFloating`. Helpers: `rules`, `validate`, `passwordStrength`.
 

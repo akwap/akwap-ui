@@ -27,6 +27,8 @@
   --ak-color-brand-foreground-hover: var(--ak-brand-60);
   --ak-color-brand-stroke: var(--ak-brand-80);
   --ak-color-on-brand: var(--ak-white);
+  /* Text on success/warning/info fills (danger fills use on-brand). */
+  --ak-color-on-status: var(--ak-white);
 
   /* Backgrounds & surfaces */
   --ak-color-background: var(--ak-grey-98);
@@ -72,7 +74,7 @@
   --ak-color-success-background: var(--ak-green-80);
   --ak-color-success-border: var(--ak-green-70);
   --ak-color-warning: var(--ak-amber-30);
-  --ak-color-warning-strong: var(--ak-amber-40);
+  --ak-color-warning-strong: var(--ak-amber-30);
   --ak-color-warning-background: var(--ak-amber-80);
   --ak-color-warning-border: var(--ak-amber-70);
   --ak-color-danger: var(--ak-red-30);
@@ -87,6 +89,58 @@
   --ak-color-info-border: var(--ak-cyan-70);
 
   /* Data viz */
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #ffffff;
+  --ak-color-red: var(--ak-palette-red-30);
+  --ak-color-red-strong: var(--ak-palette-red-40);
+  --ak-color-red-background: var(--ak-palette-red-80);
+  --ak-color-red-border: var(--ak-palette-red-70);
+  --ak-color-orange: var(--ak-palette-orange-30);
+  --ak-color-orange-strong: var(--ak-palette-orange-40);
+  --ak-color-orange-background: var(--ak-palette-orange-80);
+  --ak-color-orange-border: var(--ak-palette-orange-70);
+  --ak-color-amber: var(--ak-palette-amber-30);
+  --ak-color-amber-strong: var(--ak-palette-amber-40);
+  --ak-color-amber-background: var(--ak-palette-amber-80);
+  --ak-color-amber-border: var(--ak-palette-amber-70);
+  --ak-color-lime: var(--ak-palette-lime-30);
+  --ak-color-lime-strong: var(--ak-palette-lime-40);
+  --ak-color-lime-background: var(--ak-palette-lime-80);
+  --ak-color-lime-border: var(--ak-palette-lime-70);
+  --ak-color-green: var(--ak-palette-green-30);
+  --ak-color-green-strong: var(--ak-palette-green-40);
+  --ak-color-green-background: var(--ak-palette-green-80);
+  --ak-color-green-border: var(--ak-palette-green-70);
+  --ak-color-teal: var(--ak-palette-teal-30);
+  --ak-color-teal-strong: var(--ak-palette-teal-40);
+  --ak-color-teal-background: var(--ak-palette-teal-80);
+  --ak-color-teal-border: var(--ak-palette-teal-70);
+  --ak-color-cyan: var(--ak-palette-cyan-30);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-40);
+  --ak-color-cyan-background: var(--ak-palette-cyan-80);
+  --ak-color-cyan-border: var(--ak-palette-cyan-70);
+  --ak-color-blue: var(--ak-palette-blue-30);
+  --ak-color-blue-strong: var(--ak-palette-blue-40);
+  --ak-color-blue-background: var(--ak-palette-blue-80);
+  --ak-color-blue-border: var(--ak-palette-blue-70);
+  --ak-color-indigo: var(--ak-palette-indigo-30);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-40);
+  --ak-color-indigo-background: var(--ak-palette-indigo-80);
+  --ak-color-indigo-border: var(--ak-palette-indigo-70);
+  --ak-color-purple: var(--ak-palette-purple-30);
+  --ak-color-purple-strong: var(--ak-palette-purple-40);
+  --ak-color-purple-background: var(--ak-palette-purple-80);
+  --ak-color-purple-border: var(--ak-palette-purple-70);
+  --ak-color-magenta: var(--ak-palette-magenta-30);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-40);
+  --ak-color-magenta-background: var(--ak-palette-magenta-80);
+  --ak-color-magenta-border: var(--ak-palette-magenta-70);
+  --ak-color-pink: var(--ak-palette-pink-30);
+  --ak-color-pink-strong: var(--ak-palette-pink-40);
+  --ak-color-pink-background: var(--ak-palette-pink-80);
+  --ak-color-pink-border: var(--ak-palette-pink-70);
+
   --ak-color-data-1: var(--ak-data-1);
   --ak-color-data-2: var(--ak-data-2);
   --ak-color-data-3: var(--ak-data-3);
@@ -126,6 +180,7 @@
   --ak-color-brand-foreground-hover: var(--ak-brand-130);
   --ak-color-brand-stroke: var(--ak-brand-100);
   --ak-color-on-brand: var(--ak-white);
+  --ak-color-on-status: var(--ak-grey-4);
 
   --ak-color-background: var(--ak-grey-12);
   --ak-color-background-secondary: var(--ak-grey-8);
@@ -180,6 +235,58 @@
   --ak-color-info-background: var(--ak-cyan-10);
   --ak-color-info-border: var(--ak-cyan-30);
 
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #ffffff;
+  --ak-color-red: var(--ak-palette-red-60);
+  --ak-color-red-strong: var(--ak-palette-red-40);
+  --ak-color-red-background: var(--ak-palette-red-10);
+  --ak-color-red-border: var(--ak-palette-red-30);
+  --ak-color-orange: var(--ak-palette-orange-60);
+  --ak-color-orange-strong: var(--ak-palette-orange-40);
+  --ak-color-orange-background: var(--ak-palette-orange-10);
+  --ak-color-orange-border: var(--ak-palette-orange-30);
+  --ak-color-amber: var(--ak-palette-amber-60);
+  --ak-color-amber-strong: var(--ak-palette-amber-40);
+  --ak-color-amber-background: var(--ak-palette-amber-10);
+  --ak-color-amber-border: var(--ak-palette-amber-30);
+  --ak-color-lime: var(--ak-palette-lime-60);
+  --ak-color-lime-strong: var(--ak-palette-lime-40);
+  --ak-color-lime-background: var(--ak-palette-lime-10);
+  --ak-color-lime-border: var(--ak-palette-lime-30);
+  --ak-color-green: var(--ak-palette-green-60);
+  --ak-color-green-strong: var(--ak-palette-green-40);
+  --ak-color-green-background: var(--ak-palette-green-10);
+  --ak-color-green-border: var(--ak-palette-green-30);
+  --ak-color-teal: var(--ak-palette-teal-60);
+  --ak-color-teal-strong: var(--ak-palette-teal-40);
+  --ak-color-teal-background: var(--ak-palette-teal-10);
+  --ak-color-teal-border: var(--ak-palette-teal-30);
+  --ak-color-cyan: var(--ak-palette-cyan-60);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-40);
+  --ak-color-cyan-background: var(--ak-palette-cyan-10);
+  --ak-color-cyan-border: var(--ak-palette-cyan-30);
+  --ak-color-blue: var(--ak-palette-blue-60);
+  --ak-color-blue-strong: var(--ak-palette-blue-40);
+  --ak-color-blue-background: var(--ak-palette-blue-10);
+  --ak-color-blue-border: var(--ak-palette-blue-30);
+  --ak-color-indigo: var(--ak-palette-indigo-60);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-40);
+  --ak-color-indigo-background: var(--ak-palette-indigo-10);
+  --ak-color-indigo-border: var(--ak-palette-indigo-30);
+  --ak-color-purple: var(--ak-palette-purple-60);
+  --ak-color-purple-strong: var(--ak-palette-purple-40);
+  --ak-color-purple-background: var(--ak-palette-purple-10);
+  --ak-color-purple-border: var(--ak-palette-purple-30);
+  --ak-color-magenta: var(--ak-palette-magenta-60);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-40);
+  --ak-color-magenta-background: var(--ak-palette-magenta-10);
+  --ak-color-magenta-border: var(--ak-palette-magenta-30);
+  --ak-color-pink: var(--ak-palette-pink-60);
+  --ak-color-pink-strong: var(--ak-palette-pink-40);
+  --ak-color-pink-background: var(--ak-palette-pink-10);
+  --ak-color-pink-border: var(--ak-palette-pink-30);
+
   --ak-color-data-1: var(--ak-data-1-dark);
   --ak-color-data-2: var(--ak-data-2-dark);
   --ak-color-data-3: var(--ak-data-3-dark);
@@ -210,6 +317,7 @@
   --ak-color-brand-foreground-hover: #ffffff;
   --ak-color-brand-stroke: #ffff00;
   --ak-color-on-brand: #000000;
+  --ak-color-on-status: #000000;
 
   --ak-color-background: #000000;
   --ak-color-background-secondary: #000000;
@@ -263,6 +371,58 @@
   --ak-color-info-strong: #1aebff;
   --ak-color-info-background: #000000;
   --ak-color-info-border: #1aebff;
+
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #000000;
+  --ak-color-red: var(--ak-palette-red-60);
+  --ak-color-red-strong: var(--ak-palette-red-60);
+  --ak-color-red-background: #000000;
+  --ak-color-red-border: var(--ak-palette-red-60);
+  --ak-color-orange: var(--ak-palette-orange-60);
+  --ak-color-orange-strong: var(--ak-palette-orange-60);
+  --ak-color-orange-background: #000000;
+  --ak-color-orange-border: var(--ak-palette-orange-60);
+  --ak-color-amber: var(--ak-palette-amber-60);
+  --ak-color-amber-strong: var(--ak-palette-amber-60);
+  --ak-color-amber-background: #000000;
+  --ak-color-amber-border: var(--ak-palette-amber-60);
+  --ak-color-lime: var(--ak-palette-lime-60);
+  --ak-color-lime-strong: var(--ak-palette-lime-60);
+  --ak-color-lime-background: #000000;
+  --ak-color-lime-border: var(--ak-palette-lime-60);
+  --ak-color-green: var(--ak-palette-green-60);
+  --ak-color-green-strong: var(--ak-palette-green-60);
+  --ak-color-green-background: #000000;
+  --ak-color-green-border: var(--ak-palette-green-60);
+  --ak-color-teal: var(--ak-palette-teal-60);
+  --ak-color-teal-strong: var(--ak-palette-teal-60);
+  --ak-color-teal-background: #000000;
+  --ak-color-teal-border: var(--ak-palette-teal-60);
+  --ak-color-cyan: var(--ak-palette-cyan-60);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-60);
+  --ak-color-cyan-background: #000000;
+  --ak-color-cyan-border: var(--ak-palette-cyan-60);
+  --ak-color-blue: var(--ak-palette-blue-60);
+  --ak-color-blue-strong: var(--ak-palette-blue-60);
+  --ak-color-blue-background: #000000;
+  --ak-color-blue-border: var(--ak-palette-blue-60);
+  --ak-color-indigo: var(--ak-palette-indigo-60);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-60);
+  --ak-color-indigo-background: #000000;
+  --ak-color-indigo-border: var(--ak-palette-indigo-60);
+  --ak-color-purple: var(--ak-palette-purple-60);
+  --ak-color-purple-strong: var(--ak-palette-purple-60);
+  --ak-color-purple-background: #000000;
+  --ak-color-purple-border: var(--ak-palette-purple-60);
+  --ak-color-magenta: var(--ak-palette-magenta-60);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-60);
+  --ak-color-magenta-background: #000000;
+  --ak-color-magenta-border: var(--ak-palette-magenta-60);
+  --ak-color-pink: var(--ak-palette-pink-60);
+  --ak-color-pink-strong: var(--ak-palette-pink-60);
+  --ak-color-pink-background: #000000;
+  --ak-color-pink-border: var(--ak-palette-pink-60);
 
   --ak-color-data-1: #ffff00;
   --ak-color-data-2: #1aebff;

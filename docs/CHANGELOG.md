@@ -4,7 +4,22 @@ All notable changes to AkwapUI are recorded here. The format follows [Keep a Cha
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+
+- Accent colour palette: 12 hues (red, orange, amber, lime, green, teal, cyan, blue, indigo, purple, magenta, pink) generated in OKLCH, with theme-aware text, fill, tint and border roles for light, dark and high contrast, Tailwind utilities, and `accentFor()` for stable colours per category. Contrast is at least 5.6:1 for every text pairing.
+- `AkBadge` accepts accent colours; `AkAvatar` uses the accent palette for initials and takes a `color` prop.
+- `AkIcon` component with six sizes, role and accent colours, and an optional accessible label.
+- The AkwapUI icon set: 84 semantic names grouped into actions, navigation, status, objects, data and appearance (`icons`, `iconGroups`).
+- Icons foundation page with the semantic set and a searchable library of all 2,000+ Lucide icons (size and stroke previews, copy import). The library is a separate data chunk loaded only on that page.
+- Icon component documentation page, accent colour documentation, and tests for both.
+
+### Changed
+
+- Avatar initials now use the accent palette instead of mixing chart colours.
+
+### Fixed
+
+- Filled success, warning and info badges (and status indicator glyphs) did not reach 4.5:1 contrast in some themes. They now use a new `on-status` text colour, and the light theme's `warning-strong` is one step darker.
 
 ## [1.0.0] - 2026-11-10
 
@@ -43,6 +58,7 @@ First complete release.
 | 7 | Documentation site, 14-section component pages, live examples, playground | Done |
 | 8 | Unit, end-to-end, responsive and accessibility tests; production and library builds | Done |
 | 9 | Markdown documentation | Done |
+| 10 | Accent colour palette and icon system | Done |
 
 ### Not done yet
 

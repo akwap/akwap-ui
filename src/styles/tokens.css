@@ -109,6 +109,122 @@
   --ak-cyan-70: #a9d8ef;
   --ak-cyan-80: #f1f9fd;
 
+  /* ---------------------------------------------------------------------
+     Accent palette: 12 hues for categories, tags, avatars and illustrations.
+     Generated in OKLCH (fixed lightness per step, chroma clamped to sRGB) so
+     every hue has the same perceived weight at the same step.
+     10 = darkest … 80 = lightest tint. Contrast verified in the light, dark and
+     high-contrast role mappings (see themes.css).
+     Hues: red, orange, amber, lime, green, teal, cyan, blue, indigo, purple, magenta, pink.
+     --------------------------------------------------------------------- */
+  --ak-palette-red-10: #420105;
+  --ak-palette-red-20: #6a000b;
+  --ak-palette-red-30: #970818;
+  --ak-palette-red-40: #b02a2d;
+  --ak-palette-red-50: #d24c49;
+  --ak-palette-red-60: #f9837c;
+  --ak-palette-red-70: #fec8c3;
+  --ak-palette-red-80: #fef4f3;
+
+  --ak-palette-orange-10: #361400;
+  --ak-palette-orange-20: #572501;
+  --ak-palette-orange-30: #7e3903;
+  --ak-palette-orange-40: #9c4700;
+  --ak-palette-orange-50: #c85d02;
+  --ak-palette-orange-60: #f28d50;
+  --ak-palette-orange-70: #ffcbae;
+  --ak-palette-orange-80: #fef5f0;
+
+  --ak-palette-amber-10: #2d1b00;
+  --ak-palette-amber-20: #492f02;
+  --ak-palette-amber-30: #6c4701;
+  --ak-palette-amber-40: #855904;
+  --ak-palette-amber-50: #ab7302;
+  --ak-palette-amber-60: #df9c28;
+  --ak-palette-amber-70: #f6d19f;
+  --ak-palette-amber-80: #fef5ea;
+
+  --ak-palette-lime-10: #192400;
+  --ak-palette-lime-20: #2c3c01;
+  --ak-palette-lime-30: #425900;
+  --ak-palette-lime-40: #536f04;
+  --ak-palette-lime-50: #6c8e03;
+  --ak-palette-lime-60: #96ba4b;
+  --ak-palette-lime-70: #cce1aa;
+  --ak-palette-lime-80: #f3f9eb;
+
+  --ak-palette-green-10: #00270d;
+  --ak-palette-green-20: #01421a;
+  --ak-palette-green-30: #016129;
+  --ak-palette-green-40: #057836;
+  --ak-palette-green-50: #059a46;
+  --ak-palette-green-60: #5ec479;
+  --ak-palette-green-70: #b4e6bd;
+  --ak-palette-green-80: #eefbf0;
+
+  --ak-palette-teal-10: #022620;
+  --ak-palette-teal-20: #003f36;
+  --ak-palette-teal-30: #005d51;
+  --ak-palette-teal-40: #037465;
+  --ak-palette-teal-50: #059583;
+  --ak-palette-teal-60: #10c5ae;
+  --ak-palette-teal-70: #9fe9d9;
+  --ak-palette-teal-80: #e9fcf7;
+
+  --ak-palette-cyan-10: #00242c;
+  --ak-palette-cyan-20: #013d48;
+  --ak-palette-cyan-30: #005a6a;
+  --ak-palette-cyan-40: #016f82;
+  --ak-palette-cyan-50: #0090a8;
+  --ak-palette-cyan-60: #02bfde;
+  --ak-palette-cyan-70: #9ce5f7;
+  --ak-palette-cyan-80: #eafaff;
+
+  --ak-palette-blue-10: #001e43;
+  --ak-palette-blue-20: #01346b;
+  --ak-palette-blue-30: #024e9a;
+  --ak-palette-blue-40: #0161bd;
+  --ak-palette-blue-50: #2a80e2;
+  --ak-palette-blue-60: #6eadfe;
+  --ak-palette-blue-70: #bedafe;
+  --ak-palette-blue-80: #f2f7fe;
+
+  --ak-palette-indigo-10: #14154e;
+  --ak-palette-indigo-20: #252779;
+  --ak-palette-indigo-30: #3a3eaa;
+  --ak-palette-indigo-40: #4b53c2;
+  --ak-palette-indigo-50: #6572e4;
+  --ak-palette-indigo-60: #93a3fe;
+  --ak-palette-indigo-70: #ccd5ff;
+  --ak-palette-indigo-80: #f4f6fe;
+
+  --ak-palette-purple-10: #280c47;
+  --ak-palette-purple-20: #421b6f;
+  --ak-palette-purple-30: #602e9d;
+  --ak-palette-purple-40: #7444b4;
+  --ak-palette-purple-50: #9163d5;
+  --ak-palette-purple-60: #b994f8;
+  --ak-palette-purple-70: #deceff;
+  --ak-palette-purple-80: #f8f5fe;
+
+  --ak-palette-magenta-10: #370335;
+  --ak-palette-magenta-20: #580c55;
+  --ak-palette-magenta-30: #7f1c7b;
+  --ak-palette-magenta-40: #953490;
+  --ak-palette-magenta-50: #b654b0;
+  --ak-palette-magenta-60: #dd87d6;
+  --ak-palette-magenta-70: #f5c6f0;
+  --ak-palette-magenta-80: #fef3fd;
+
+  --ak-palette-pink-10: #3f0022;
+  --ak-palette-pink-20: #640139;
+  --ak-palette-pink-30: #900b54;
+  --ak-palette-pink-40: #a72a68;
+  --ak-palette-pink-50: #ca4b85;
+  --ak-palette-pink-60: #f081af;
+  --ak-palette-pink-70: #fec5da;
+  --ak-palette-pink-80: #fef3f7;
+
   /* Data-visualisation categorical palette. Validated for colour-vision
      deficiency (adjacent-pair ΔE ≥ 8) in both modes; fixed order, never cycled.
      Deliberately NOT tied to the brand hue so rebranding cannot break it. */

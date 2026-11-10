@@ -33,6 +33,7 @@ import AkDescriptionList from '@/components/ui/data-display/AkDescriptionList.vu
 import AkDivider from '@/components/ui/data-display/AkDivider.vue'
 import AkFileAttachment from '@/components/ui/data-display/AkFileAttachment.vue'
 import AkKbd from '@/components/ui/data-display/AkKbd.vue'
+import AkIcon from '@/components/ui/icons/AkIcon.vue'
 import AkKeyValue from '@/components/ui/data-display/AkKeyValue.vue'
 import AkList from '@/components/ui/data-display/AkList.vue'
 import AkStatCard from '@/components/ui/data-display/AkStatCard.vue'
@@ -100,6 +101,7 @@ export {
   AkDivider,
   AkFileAttachment,
   AkKbd,
+  AkIcon,
   AkKeyValue,
   AkList,
   AkStatCard,
@@ -169,6 +171,7 @@ export const components: Record<string, Component> = {
   AkDivider,
   AkFileAttachment,
   AkKbd,
+  AkIcon,
   AkKeyValue,
   AkList,
   AkStatCard,
@@ -220,6 +223,10 @@ export type { SelectOption } from '@/components/ui/forms/AkSelect.vue'
 export type { Series } from '@/components/ui/charts/chartUtils'
 export type { Rule } from '@/utils/validation'
 
+export type { IconSize, IconColor } from '@/components/ui/icons/AkIcon.vue'
+export { icons, iconGroups, type IconName } from '@/components/ui/icons/icons'
+export { ACCENT_COLORS, accentClasses, accentFor, isAccentColor, type AccentColor } from '@/components/ui/accent'
+export type { BadgeColor } from '@/components/ui/data-display/AkBadge.vue'
 export { useTheme } from '@/composables/useTheme'
 export { useBrand } from '@/composables/useBrand'
 export { useToast } from '@/composables/useToast'

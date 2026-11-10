@@ -33,7 +33,7 @@ src/
 
 | Layer | Example | Who reads it |
 | --- | --- | --- |
-| A. Global | `--ak-brand-80`, `--ak-grey-96`, `--ak-space-4`, `--ak-radius-medium` | Only themes.css |
+| A. Global | `--ak-brand-80`, `--ak-grey-96`, `--ak-palette-teal-30`, `--ak-space-4`, `--ak-radius-medium` | Only themes.css |
 | B. Semantic | `--ak-color-surface`, `--ak-color-text-secondary`, `--ak-color-brand-primary`, `--ak-radius-control` | Components and Tailwind utilities |
 
 Tailwind utilities are generated from layer B, so templates use names like `bg-surface`, `text-secondary`, `border-line-subtle`, `rounded-control`, `shadow-elevation-8`, `text-body-1`.
@@ -41,6 +41,20 @@ Tailwind utilities are generated from layer B, so templates use names like `bg-s
 ### Brand
 
 The 16-step brand ramp (`--ak-brand-10` … `--ak-brand-160`) is computed in OKLCH from two seeds, `--ak-brand-hue` and `--ak-brand-chroma`. Rebranding is a two-variable change; `useBrand().setBrandHex('#0f7b6c')` does it at runtime and stores it.
+
+### Colour families
+
+| Family | Purpose |
+| --- | --- |
+| Brand | Primary actions, selection and focus; generated from one hue |
+| Neutrals | Surfaces, text and borders |
+| Status | Success, warning, danger and info; always paired with an icon or text |
+| Accent | 12 hues for categories, tags and avatars; no status meaning |
+| Data | 6 colour-vision-checked slots for charts |
+
+### Icons
+
+Icons are Lucide outline icons at a 1.75 stroke. `AkIcon` renders them at token sizes (12 to 48px) and colours. The AkwapUI icon set maps 84 meanings (add, delete, warning, calendar…) to one icon each, so the same action always looks the same. The documentation includes a searchable library of all 2,000+ Lucide icons, loaded only on that page.
 
 ### Type ramp
 
@@ -71,4 +85,4 @@ Display 68, Large title 40, Title 1 32, Title 2 28, Title 3 24, Subtitle 1 20, S
 - **Three themes** with a switcher and a "system" option. See [THEME_GUIDE.md](./THEME_GUIDE.md).
 - **Four layouts**: marketing, authentication, dashboard (responsive sidebar, top bar, command palette) and documentation.
 - **16 example pages**: home, about, contact, legal, login, register, forgot password, reset password, verify email, dashboard overview, analytics, user management, notifications, activity logs, system settings, profile, account settings and a 404 page.
-- **Documentation site** at `/docs` with foundations, 26 component pages that follow the same 14-section structure, patterns, templates, resources and a playground.
+- **Documentation site** at `/docs` with foundations, 27 component pages that follow the same 14-section structure, patterns, templates, resources and a playground.

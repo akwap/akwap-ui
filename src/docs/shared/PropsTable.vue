@@ -6,7 +6,7 @@ export interface PropRow {
   description: string
 }
 /** API reference table for props, events or slots. */
-defineProps<{ title: string; rows: PropRow[]; kind?: 'Props' | 'Events' | 'Slots' }>()
+defineProps<{ title: string; rows: PropRow[]; kind?: 'Props' | 'Events' | 'Slots' | 'Exports' }>()
 </script>
 
 <template>
