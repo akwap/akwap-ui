@@ -1,0 +1,3 @@
+{% load akwapui %}<div class="ak-segmented" role="group" aria-label="{{ label }}" data-ak-theme-switcher>{% for value, text, icon in options %}
+  <button type="button" data-ak-theme="{{ value }}" aria-pressed="false"{% if not labels %} aria-label="{{ text }}" title="{{ text }}"{% endif %}>{% ak_icon icon size=16 %}{% if labels %}<span>{{ text }}</span>{% endif %}</button>{% endfor %}
+</div>

@@ -1,0 +1,16 @@
+{% load akwapui %}{% with kind=field|ak_field_kind %}{% if kind == "hidden" %}{{ field }}{% elif kind == "checkbox" or kind == "switch" %}<div class="ak-field{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+  <label class="ak-choice" for="{{ field.id_for_label }}">{{ field|ak_widget }}<span><span>{{ field.label }}{% if field.field.required %}<span class="ak-label-required" aria-hidden="true"> *</span>{% endif %}</span>{% if field.help_text %}<span class="ak-choice-description" id="{{ field.auto_id }}_helptext">{{ field.help_text|safe }}</span>{% endif %}</span></label>
+  {% include "akwapui/forms/errors.html" %}
+</div>{% elif kind == "choices" %}<fieldset class="ak-field m-0 min-w-0 border-0 p-0{% if field.css_classes %} {{ field.css_classes }}{% endif %}"{% if field.help_text or field.errors %} aria-describedby="{% if field.help_text %}{{ field.auto_id }}_helptext{% endif %}{% if field.errors %} {{ field.auto_id }}_error{% endif %}"{% endif %}>
+  {% if field.label %}<legend class="ak-label mb-1 p-0{% if hide_label %} sr-only{% endif %}">{{ field.label }}{% if field.field.required %}<span class="ak-label-required" aria-hidden="true"> *</span>{% endif %}</legend>{% endif %}
+  <div class="ak-choice-list">{{ field|ak_widget }}</div>
+  {% include "akwapui/forms/errors.html" %}
+  {% if field.help_text %}<p class="ak-helper" id="{{ field.auto_id }}_helptext">{{ field.help_text|safe }}</p>{% endif %}
+</fieldset>{% else %}<div class="ak-field{% if horizontal %} ak-field-horizontal{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+  {% if field.label %}<label class="ak-label{% if hide_label %} sr-only{% endif %}" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="ak-label-required" aria-hidden="true"> *</span>{% endif %}</label>{% endif %}
+  <div class="ak-field-control">
+    <div class="ak-control{% if size and size != 'md' %} ak-control-{{ size }}{% endif %}{% if kind == 'select' %} ak-control-select{% elif kind == 'multiple' %} ak-control-select ak-control-multiple{% elif kind == 'textarea' %} ak-control-textarea{% elif kind == 'file' or kind == 'multi' %} h-auto flex-wrap py-1.5{% endif %}{% if field.errors %} ak-control-invalid{% endif %}">{% if field.widget_type == "search" %}{% ak_icon "search" %}{% endif %}{{ field|ak_widget }}{% if kind == "select" %}{% ak_icon "chevron-down" %}{% endif %}</div>
+    {% include "akwapui/forms/errors.html" %}
+    {% if field.help_text %}<p class="ak-helper" id="{{ field.auto_id }}_helptext">{{ field.help_text|safe }}</p>{% endif %}
+  </div>
+</div>{% endif %}{% endwith %}

@@ -1,0 +1,476 @@
+/* ==========================================================================
+   AkwapUI — Semantic tokens (layer B) & themes
+   --------------------------------------------------------------------------
+   Semantic tokens describe a ROLE ("surface", "text-secondary") rather than a
+   value. Components and Tailwind utilities consume only these.
+
+   Themes:   :root / [data-theme="light"]   (default)
+             [data-theme="dark"]
+             [data-theme="high-contrast"]
+   "System" is resolved in JS (useTheme) to light or dark, and the inline
+   script in index.html applies it before first paint.
+   ========================================================================== */
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Brand */
+  --ak-color-brand-primary: var(--ak-brand-80);
+  --ak-color-brand-hover: var(--ak-brand-70);
+  --ak-color-brand-pressed: var(--ak-brand-50);
+  --ak-color-brand-selected: var(--ak-brand-60);
+  --ak-color-brand-secondary: var(--ak-brand-140);
+  --ak-color-brand-subtle: var(--ak-brand-160);
+  --ak-color-brand-subtle-hover: var(--ak-brand-150);
+  --ak-color-brand-foreground: var(--ak-brand-70);
+  --ak-color-brand-foreground-hover: var(--ak-brand-60);
+  --ak-color-brand-stroke: var(--ak-brand-80);
+  --ak-color-on-brand: var(--ak-white);
+  /* Text on success/warning/info fills (danger fills use on-brand). */
+  --ak-color-on-status: var(--ak-white);
+
+  /* Backgrounds & surfaces */
+  --ak-color-background: var(--ak-grey-98);
+  --ak-color-background-secondary: var(--ak-grey-96);
+  --ak-color-surface: var(--ak-white);
+  --ak-color-surface-secondary: var(--ak-grey-98);
+  --ak-color-surface-tertiary: var(--ak-grey-96);
+  --ak-color-surface-hover: var(--ak-grey-96);
+  --ak-color-surface-pressed: var(--ak-grey-88);
+  --ak-color-surface-selected: var(--ak-grey-92);
+  --ak-color-surface-inverse: var(--ak-grey-16);
+  --ak-color-surface-overlay: var(--ak-white);
+  --ak-color-backdrop: rgb(0 0 0 / 0.4);
+  --ak-color-subtle-hover: rgb(0 0 0 / 0.04);
+  --ak-color-subtle-pressed: rgb(0 0 0 / 0.08);
+
+  /* Text */
+  --ak-color-text-primary: var(--ak-grey-14);
+  --ak-color-text-secondary: var(--ak-grey-26);
+  --ak-color-text-tertiary: var(--ak-grey-38);
+  --ak-color-text-disabled: var(--ak-grey-74);
+  --ak-color-text-inverse: var(--ak-white);
+  --ak-color-text-link: var(--ak-brand-70);
+  --ak-color-text-link-hover: var(--ak-brand-60);
+
+  /* Borders */
+  --ak-color-border: var(--ak-grey-82);
+  --ak-color-border-hover: var(--ak-grey-78);
+  --ak-color-border-strong: var(--ak-grey-38);
+  --ak-color-border-subtle: var(--ak-grey-88);
+  --ak-color-border-focus: var(--ak-grey-14);
+  --ak-color-border-focus-inner: var(--ak-white);
+  --ak-color-border-disabled: var(--ak-grey-88);
+
+  /* Control fill */
+  --ak-color-control: var(--ak-white);
+  --ak-color-control-disabled: var(--ak-grey-96);
+  --ak-color-control-underline: var(--ak-grey-38);
+
+  /* Status */
+  --ak-color-success: var(--ak-green-30);
+  --ak-color-success-strong: var(--ak-green-40);
+  --ak-color-success-background: var(--ak-green-80);
+  --ak-color-success-border: var(--ak-green-70);
+  --ak-color-warning: var(--ak-amber-30);
+  --ak-color-warning-strong: var(--ak-amber-30);
+  --ak-color-warning-background: var(--ak-amber-80);
+  --ak-color-warning-border: var(--ak-amber-70);
+  --ak-color-danger: var(--ak-red-30);
+  --ak-color-danger-strong: var(--ak-red-40);
+  --ak-color-danger-hover: var(--ak-red-30);
+  --ak-color-danger-pressed: var(--ak-red-20);
+  --ak-color-danger-background: var(--ak-red-80);
+  --ak-color-danger-border: var(--ak-red-70);
+  --ak-color-info: var(--ak-cyan-30);
+  --ak-color-info-strong: var(--ak-cyan-40);
+  --ak-color-info-background: var(--ak-cyan-80);
+  --ak-color-info-border: var(--ak-cyan-70);
+
+  /* Data viz */
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #ffffff;
+  --ak-color-red: var(--ak-palette-red-30);
+  --ak-color-red-strong: var(--ak-palette-red-40);
+  --ak-color-red-background: var(--ak-palette-red-80);
+  --ak-color-red-border: var(--ak-palette-red-70);
+  --ak-color-orange: var(--ak-palette-orange-30);
+  --ak-color-orange-strong: var(--ak-palette-orange-40);
+  --ak-color-orange-background: var(--ak-palette-orange-80);
+  --ak-color-orange-border: var(--ak-palette-orange-70);
+  --ak-color-amber: var(--ak-palette-amber-30);
+  --ak-color-amber-strong: var(--ak-palette-amber-40);
+  --ak-color-amber-background: var(--ak-palette-amber-80);
+  --ak-color-amber-border: var(--ak-palette-amber-70);
+  --ak-color-lime: var(--ak-palette-lime-30);
+  --ak-color-lime-strong: var(--ak-palette-lime-40);
+  --ak-color-lime-background: var(--ak-palette-lime-80);
+  --ak-color-lime-border: var(--ak-palette-lime-70);
+  --ak-color-green: var(--ak-palette-green-30);
+  --ak-color-green-strong: var(--ak-palette-green-40);
+  --ak-color-green-background: var(--ak-palette-green-80);
+  --ak-color-green-border: var(--ak-palette-green-70);
+  --ak-color-teal: var(--ak-palette-teal-30);
+  --ak-color-teal-strong: var(--ak-palette-teal-40);
+  --ak-color-teal-background: var(--ak-palette-teal-80);
+  --ak-color-teal-border: var(--ak-palette-teal-70);
+  --ak-color-cyan: var(--ak-palette-cyan-30);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-40);
+  --ak-color-cyan-background: var(--ak-palette-cyan-80);
+  --ak-color-cyan-border: var(--ak-palette-cyan-70);
+  --ak-color-blue: var(--ak-palette-blue-30);
+  --ak-color-blue-strong: var(--ak-palette-blue-40);
+  --ak-color-blue-background: var(--ak-palette-blue-80);
+  --ak-color-blue-border: var(--ak-palette-blue-70);
+  --ak-color-indigo: var(--ak-palette-indigo-30);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-40);
+  --ak-color-indigo-background: var(--ak-palette-indigo-80);
+  --ak-color-indigo-border: var(--ak-palette-indigo-70);
+  --ak-color-purple: var(--ak-palette-purple-30);
+  --ak-color-purple-strong: var(--ak-palette-purple-40);
+  --ak-color-purple-background: var(--ak-palette-purple-80);
+  --ak-color-purple-border: var(--ak-palette-purple-70);
+  --ak-color-magenta: var(--ak-palette-magenta-30);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-40);
+  --ak-color-magenta-background: var(--ak-palette-magenta-80);
+  --ak-color-magenta-border: var(--ak-palette-magenta-70);
+  --ak-color-pink: var(--ak-palette-pink-30);
+  --ak-color-pink-strong: var(--ak-palette-pink-40);
+  --ak-color-pink-background: var(--ak-palette-pink-80);
+  --ak-color-pink-border: var(--ak-palette-pink-70);
+
+  --ak-color-data-1: var(--ak-data-1);
+  --ak-color-data-2: var(--ak-data-2);
+  --ak-color-data-3: var(--ak-data-3);
+  --ak-color-data-4: var(--ak-data-4);
+  --ak-color-data-5: var(--ak-data-5);
+  --ak-color-data-6: var(--ak-data-6);
+  --ak-color-chart-grid: var(--ak-grey-92);
+
+  /* Elevation — two-layer shadows: ambient + key */
+  --ak-shadow-0: none;
+  --ak-shadow-2: 0 0 2px rgb(0 0 0 / 0.12), 0 1px 2px rgb(0 0 0 / 0.14);
+  --ak-shadow-4: 0 0 2px rgb(0 0 0 / 0.12), 0 2px 4px rgb(0 0 0 / 0.14);
+  --ak-shadow-8: 0 0 2px rgb(0 0 0 / 0.12), 0 4px 8px rgb(0 0 0 / 0.14);
+  --ak-shadow-16: 0 0 2px rgb(0 0 0 / 0.12), 0 8px 16px rgb(0 0 0 / 0.14);
+  --ak-shadow-28: 0 0 8px rgb(0 0 0 / 0.12), 0 14px 28px rgb(0 0 0 / 0.14);
+
+  /* Shape roles (adjustable from the playground) */
+  --ak-radius-control: var(--ak-radius-medium);
+  --ak-radius-card: var(--ak-radius-xlarge);
+  --ak-radius-overlay: var(--ak-radius-xlarge);
+
+  /* Focus ring */
+  --ak-focus-ring-width: var(--ak-stroke-thick);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --ak-color-brand-primary: var(--ak-brand-70);
+  --ak-color-brand-hover: var(--ak-brand-80);
+  --ak-color-brand-pressed: var(--ak-brand-40);
+  --ak-color-brand-selected: var(--ak-brand-60);
+  --ak-color-brand-secondary: var(--ak-brand-40);
+  --ak-color-brand-subtle: var(--ak-brand-20);
+  --ak-color-brand-subtle-hover: var(--ak-brand-30);
+  --ak-color-brand-foreground: var(--ak-brand-110);
+  --ak-color-brand-foreground-hover: var(--ak-brand-130);
+  --ak-color-brand-stroke: var(--ak-brand-100);
+  --ak-color-on-brand: var(--ak-white);
+  --ak-color-on-status: var(--ak-grey-4);
+
+  --ak-color-background: var(--ak-grey-12);
+  --ak-color-background-secondary: var(--ak-grey-8);
+  --ak-color-surface: var(--ak-grey-16);
+  --ak-color-surface-secondary: var(--ak-grey-14);
+  --ak-color-surface-tertiary: var(--ak-grey-12);
+  --ak-color-surface-hover: var(--ak-grey-20);
+  --ak-color-surface-pressed: var(--ak-grey-12);
+  --ak-color-surface-selected: var(--ak-grey-22);
+  --ak-color-surface-inverse: var(--ak-white);
+  --ak-color-surface-overlay: var(--ak-grey-18);
+  --ak-color-backdrop: rgb(0 0 0 / 0.6);
+  --ak-color-subtle-hover: rgb(255 255 255 / 0.06);
+  --ak-color-subtle-pressed: rgb(255 255 255 / 0.1);
+
+  --ak-color-text-primary: var(--ak-white);
+  --ak-color-text-secondary: var(--ak-grey-84);
+  --ak-color-text-tertiary: var(--ak-grey-68);
+  --ak-color-text-disabled: var(--ak-grey-36);
+  --ak-color-text-inverse: var(--ak-grey-14);
+  --ak-color-text-link: var(--ak-brand-110);
+  --ak-color-text-link-hover: var(--ak-brand-130);
+
+  --ak-color-border: var(--ak-grey-32);
+  --ak-color-border-hover: var(--ak-grey-40);
+  --ak-color-border-strong: var(--ak-grey-60);
+  --ak-color-border-subtle: var(--ak-grey-24);
+  --ak-color-border-focus: var(--ak-white);
+  --ak-color-border-focus-inner: var(--ak-black);
+  --ak-color-border-disabled: var(--ak-grey-26);
+
+  --ak-color-control: var(--ak-grey-16);
+  --ak-color-control-disabled: var(--ak-grey-14);
+  --ak-color-control-underline: var(--ak-grey-60);
+
+  --ak-color-success: var(--ak-green-60);
+  --ak-color-success-strong: var(--ak-green-50);
+  --ak-color-success-background: var(--ak-green-10);
+  --ak-color-success-border: var(--ak-green-30);
+  --ak-color-warning: var(--ak-amber-60);
+  --ak-color-warning-strong: var(--ak-amber-50);
+  --ak-color-warning-background: var(--ak-amber-10);
+  --ak-color-warning-border: var(--ak-amber-30);
+  --ak-color-danger: var(--ak-red-60);
+  --ak-color-danger-strong: var(--ak-red-40);
+  --ak-color-danger-hover: var(--ak-red-50);
+  --ak-color-danger-pressed: var(--ak-red-30);
+  --ak-color-danger-background: var(--ak-red-10);
+  --ak-color-danger-border: var(--ak-red-30);
+  --ak-color-info: var(--ak-cyan-60);
+  --ak-color-info-strong: var(--ak-cyan-50);
+  --ak-color-info-background: var(--ak-cyan-10);
+  --ak-color-info-border: var(--ak-cyan-30);
+
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #ffffff;
+  --ak-color-red: var(--ak-palette-red-60);
+  --ak-color-red-strong: var(--ak-palette-red-40);
+  --ak-color-red-background: var(--ak-palette-red-10);
+  --ak-color-red-border: var(--ak-palette-red-30);
+  --ak-color-orange: var(--ak-palette-orange-60);
+  --ak-color-orange-strong: var(--ak-palette-orange-40);
+  --ak-color-orange-background: var(--ak-palette-orange-10);
+  --ak-color-orange-border: var(--ak-palette-orange-30);
+  --ak-color-amber: var(--ak-palette-amber-60);
+  --ak-color-amber-strong: var(--ak-palette-amber-40);
+  --ak-color-amber-background: var(--ak-palette-amber-10);
+  --ak-color-amber-border: var(--ak-palette-amber-30);
+  --ak-color-lime: var(--ak-palette-lime-60);
+  --ak-color-lime-strong: var(--ak-palette-lime-40);
+  --ak-color-lime-background: var(--ak-palette-lime-10);
+  --ak-color-lime-border: var(--ak-palette-lime-30);
+  --ak-color-green: var(--ak-palette-green-60);
+  --ak-color-green-strong: var(--ak-palette-green-40);
+  --ak-color-green-background: var(--ak-palette-green-10);
+  --ak-color-green-border: var(--ak-palette-green-30);
+  --ak-color-teal: var(--ak-palette-teal-60);
+  --ak-color-teal-strong: var(--ak-palette-teal-40);
+  --ak-color-teal-background: var(--ak-palette-teal-10);
+  --ak-color-teal-border: var(--ak-palette-teal-30);
+  --ak-color-cyan: var(--ak-palette-cyan-60);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-40);
+  --ak-color-cyan-background: var(--ak-palette-cyan-10);
+  --ak-color-cyan-border: var(--ak-palette-cyan-30);
+  --ak-color-blue: var(--ak-palette-blue-60);
+  --ak-color-blue-strong: var(--ak-palette-blue-40);
+  --ak-color-blue-background: var(--ak-palette-blue-10);
+  --ak-color-blue-border: var(--ak-palette-blue-30);
+  --ak-color-indigo: var(--ak-palette-indigo-60);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-40);
+  --ak-color-indigo-background: var(--ak-palette-indigo-10);
+  --ak-color-indigo-border: var(--ak-palette-indigo-30);
+  --ak-color-purple: var(--ak-palette-purple-60);
+  --ak-color-purple-strong: var(--ak-palette-purple-40);
+  --ak-color-purple-background: var(--ak-palette-purple-10);
+  --ak-color-purple-border: var(--ak-palette-purple-30);
+  --ak-color-magenta: var(--ak-palette-magenta-60);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-40);
+  --ak-color-magenta-background: var(--ak-palette-magenta-10);
+  --ak-color-magenta-border: var(--ak-palette-magenta-30);
+  --ak-color-pink: var(--ak-palette-pink-60);
+  --ak-color-pink-strong: var(--ak-palette-pink-40);
+  --ak-color-pink-background: var(--ak-palette-pink-10);
+  --ak-color-pink-border: var(--ak-palette-pink-30);
+
+  --ak-color-data-1: var(--ak-data-1-dark);
+  --ak-color-data-2: var(--ak-data-2-dark);
+  --ak-color-data-3: var(--ak-data-3-dark);
+  --ak-color-data-4: var(--ak-data-4-dark);
+  --ak-color-data-5: var(--ak-data-5-dark);
+  --ak-color-data-6: var(--ak-data-6-dark);
+  --ak-color-chart-grid: var(--ak-grey-24);
+
+  --ak-shadow-2: 0 0 2px rgb(0 0 0 / 0.24), 0 1px 2px rgb(0 0 0 / 0.28);
+  --ak-shadow-4: 0 0 2px rgb(0 0 0 / 0.24), 0 2px 4px rgb(0 0 0 / 0.28);
+  --ak-shadow-8: 0 0 2px rgb(0 0 0 / 0.24), 0 4px 8px rgb(0 0 0 / 0.28);
+  --ak-shadow-16: 0 0 2px rgb(0 0 0 / 0.24), 0 8px 16px rgb(0 0 0 / 0.28);
+  --ak-shadow-28: 0 0 8px rgb(0 0 0 / 0.24), 0 14px 28px rgb(0 0 0 / 0.28);
+}
+
+/* High contrast: maximum legibility, borders everywhere, no subtle tints. */
+[data-theme='high-contrast'] {
+  color-scheme: dark;
+
+  --ak-color-brand-primary: #ffff00;
+  --ak-color-brand-hover: #1aebff;
+  --ak-color-brand-pressed: #1aebff;
+  --ak-color-brand-selected: #ffff00;
+  --ak-color-brand-secondary: #000000;
+  --ak-color-brand-subtle: #000000;
+  --ak-color-brand-subtle-hover: #000000;
+  --ak-color-brand-foreground: #ffff00;
+  --ak-color-brand-foreground-hover: #ffffff;
+  --ak-color-brand-stroke: #ffff00;
+  --ak-color-on-brand: #000000;
+  --ak-color-on-status: #000000;
+
+  --ak-color-background: #000000;
+  --ak-color-background-secondary: #000000;
+  --ak-color-surface: #000000;
+  --ak-color-surface-secondary: #000000;
+  --ak-color-surface-tertiary: #000000;
+  --ak-color-surface-hover: #000000;
+  --ak-color-surface-pressed: #000000;
+  --ak-color-surface-selected: #000000;
+  --ak-color-surface-inverse: #ffffff;
+  --ak-color-surface-overlay: #000000;
+  --ak-color-backdrop: rgb(0 0 0 / 0.85);
+  --ak-color-subtle-hover: #000000;
+  --ak-color-subtle-pressed: #000000;
+
+  --ak-color-text-primary: #ffffff;
+  --ak-color-text-secondary: #ffffff;
+  --ak-color-text-tertiary: #ffffff;
+  --ak-color-text-disabled: #3ff23f;
+  --ak-color-text-inverse: #000000;
+  --ak-color-text-link: #ffff00;
+  --ak-color-text-link-hover: #1aebff;
+
+  --ak-color-border: #ffffff;
+  --ak-color-border-hover: #1aebff;
+  --ak-color-border-strong: #ffffff;
+  --ak-color-border-subtle: #ffffff;
+  --ak-color-border-focus: #ffffff;
+  --ak-color-border-focus-inner: #000000;
+  --ak-color-border-disabled: #3ff23f;
+
+  --ak-color-control: #000000;
+  --ak-color-control-disabled: #000000;
+  --ak-color-control-underline: #ffffff;
+
+  --ak-color-success: #3ff23f;
+  --ak-color-success-strong: #3ff23f;
+  --ak-color-success-background: #000000;
+  --ak-color-success-border: #3ff23f;
+  --ak-color-warning: #ffff00;
+  --ak-color-warning-strong: #ffff00;
+  --ak-color-warning-background: #000000;
+  --ak-color-warning-border: #ffff00;
+  --ak-color-danger: #ff6b6b;
+  --ak-color-danger-strong: #ff6b6b;
+  --ak-color-danger-hover: #ff9e9e;
+  --ak-color-danger-pressed: #ff9e9e;
+  --ak-color-danger-background: #000000;
+  --ak-color-danger-border: #ff6b6b;
+  --ak-color-info: #1aebff;
+  --ak-color-info-strong: #1aebff;
+  --ak-color-info-background: #000000;
+  --ak-color-info-border: #1aebff;
+
+  /* Accent roles: text/icon colour, filled background, tint and border.
+     Text on a *-strong fill uses --ak-color-on-accent. */
+  --ak-color-on-accent: #000000;
+  --ak-color-red: var(--ak-palette-red-60);
+  --ak-color-red-strong: var(--ak-palette-red-60);
+  --ak-color-red-background: #000000;
+  --ak-color-red-border: var(--ak-palette-red-60);
+  --ak-color-orange: var(--ak-palette-orange-60);
+  --ak-color-orange-strong: var(--ak-palette-orange-60);
+  --ak-color-orange-background: #000000;
+  --ak-color-orange-border: var(--ak-palette-orange-60);
+  --ak-color-amber: var(--ak-palette-amber-60);
+  --ak-color-amber-strong: var(--ak-palette-amber-60);
+  --ak-color-amber-background: #000000;
+  --ak-color-amber-border: var(--ak-palette-amber-60);
+  --ak-color-lime: var(--ak-palette-lime-60);
+  --ak-color-lime-strong: var(--ak-palette-lime-60);
+  --ak-color-lime-background: #000000;
+  --ak-color-lime-border: var(--ak-palette-lime-60);
+  --ak-color-green: var(--ak-palette-green-60);
+  --ak-color-green-strong: var(--ak-palette-green-60);
+  --ak-color-green-background: #000000;
+  --ak-color-green-border: var(--ak-palette-green-60);
+  --ak-color-teal: var(--ak-palette-teal-60);
+  --ak-color-teal-strong: var(--ak-palette-teal-60);
+  --ak-color-teal-background: #000000;
+  --ak-color-teal-border: var(--ak-palette-teal-60);
+  --ak-color-cyan: var(--ak-palette-cyan-60);
+  --ak-color-cyan-strong: var(--ak-palette-cyan-60);
+  --ak-color-cyan-background: #000000;
+  --ak-color-cyan-border: var(--ak-palette-cyan-60);
+  --ak-color-blue: var(--ak-palette-blue-60);
+  --ak-color-blue-strong: var(--ak-palette-blue-60);
+  --ak-color-blue-background: #000000;
+  --ak-color-blue-border: var(--ak-palette-blue-60);
+  --ak-color-indigo: var(--ak-palette-indigo-60);
+  --ak-color-indigo-strong: var(--ak-palette-indigo-60);
+  --ak-color-indigo-background: #000000;
+  --ak-color-indigo-border: var(--ak-palette-indigo-60);
+  --ak-color-purple: var(--ak-palette-purple-60);
+  --ak-color-purple-strong: var(--ak-palette-purple-60);
+  --ak-color-purple-background: #000000;
+  --ak-color-purple-border: var(--ak-palette-purple-60);
+  --ak-color-magenta: var(--ak-palette-magenta-60);
+  --ak-color-magenta-strong: var(--ak-palette-magenta-60);
+  --ak-color-magenta-background: #000000;
+  --ak-color-magenta-border: var(--ak-palette-magenta-60);
+  --ak-color-pink: var(--ak-palette-pink-60);
+  --ak-color-pink-strong: var(--ak-palette-pink-60);
+  --ak-color-pink-background: #000000;
+  --ak-color-pink-border: var(--ak-palette-pink-60);
+
+  --ak-color-data-1: #ffff00;
+  --ak-color-data-2: #1aebff;
+  --ak-color-data-3: #3ff23f;
+  --ak-color-data-4: #ff9eff;
+  --ak-color-data-5: #ff6b6b;
+  --ak-color-data-6: #ffffff;
+  --ak-color-chart-grid: #ffffff;
+
+  --ak-shadow-2: none;
+  --ak-shadow-4: none;
+  --ak-shadow-8: none;
+  --ak-shadow-16: none;
+  --ak-shadow-28: none;
+
+  --ak-focus-ring-width: var(--ak-stroke-thicker);
+}
+
+/* In high contrast, hover/selection are expressed with outlines, not fills. */
+[data-theme='high-contrast'] :is(a, button, [role='option'], [role='menuitem'], [role='tab'], summary):hover:not(:disabled) {
+  outline: 1px dashed #1aebff;
+  outline-offset: -1px;
+}
+[data-theme='high-contrast'] :is([aria-selected='true'], [aria-current='page'], [aria-checked='true']) {
+  outline: 2px solid #1aebff;
+  outline-offset: -2px;
+}
+
+/* Respect user motion preferences everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ak-duration-ultra-fast: 0ms;
+    --ak-duration-faster: 0ms;
+    --ak-duration-fast: 0ms;
+    --ak-duration-normal: 0ms;
+    --ak-duration-gentle: 0ms;
+    --ak-duration-slow: 0ms;
+    --ak-duration-slower: 0ms;
+  }
+}
+
+/* Users can also opt out of motion explicitly (Settings → Appearance). */
+[data-motion='reduced'] {
+  --ak-duration-ultra-fast: 0ms;
+  --ak-duration-faster: 0ms;
+  --ak-duration-fast: 0ms;
+  --ak-duration-normal: 0ms;
+  --ak-duration-gentle: 0ms;
+  --ak-duration-slow: 0ms;
+  --ak-duration-slower: 0ms;
+}

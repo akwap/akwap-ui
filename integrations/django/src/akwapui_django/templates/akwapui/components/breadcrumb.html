@@ -1,0 +1,6 @@
+{% load akwapui %}<nav class="ak-breadcrumb" aria-label="{{ label }}">
+  <ol>{% for item in items %}
+    <li>{% if item.url and not forloop.last %}<a href="{{ item.url }}">{{ item.label }}</a>{% else %}<span aria-current="page">{{ item.label }}</span>{% endif %}</li>{% if not forloop.last %}
+    <li aria-hidden="true">{% ak_icon "chevron-right" %}</li>{% endif %}{% endfor %}
+  </ol>
+</nav>

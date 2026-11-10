@@ -1,0 +1,349 @@
+/* ==========================================================================
+   AkwapUI — Global tokens (layer A)
+   --------------------------------------------------------------------------
+   Raw, context-free design values. Components NEVER read these directly;
+   they consume the semantic tokens in themes.css, which reference these.
+
+   Rebranding: change --ak-brand-hue / --ak-brand-chroma (or override any
+   single --ak-brand-<step>) and the whole brand ramp updates.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------
+     Brand seed. The 16-step ramp is generated in OKLCH so every step keeps
+     a predictable perceived lightness regardless of hue.
+     Default: a restrained blue (hue 252).
+     --------------------------------------------------------------------- */
+  --ak-brand-hue: 252;
+  --ak-brand-chroma: 0.15;
+
+  --ak-brand-10: oklch(0.17 calc(var(--ak-brand-chroma) * 0.45) var(--ak-brand-hue));
+  --ak-brand-20: oklch(0.22 calc(var(--ak-brand-chroma) * 0.55) var(--ak-brand-hue));
+  --ak-brand-30: oklch(0.27 calc(var(--ak-brand-chroma) * 0.65) var(--ak-brand-hue));
+  --ak-brand-40: oklch(0.32 calc(var(--ak-brand-chroma) * 0.75) var(--ak-brand-hue));
+  --ak-brand-50: oklch(0.37 calc(var(--ak-brand-chroma) * 0.85) var(--ak-brand-hue));
+  --ak-brand-60: oklch(0.42 calc(var(--ak-brand-chroma) * 0.93) var(--ak-brand-hue));
+  --ak-brand-70: oklch(0.47 var(--ak-brand-chroma) var(--ak-brand-hue));
+  --ak-brand-80: oklch(0.53 var(--ak-brand-chroma) var(--ak-brand-hue));
+  --ak-brand-90: oklch(0.6 calc(var(--ak-brand-chroma) * 0.95) var(--ak-brand-hue));
+  --ak-brand-100: oklch(0.67 calc(var(--ak-brand-chroma) * 0.85) var(--ak-brand-hue));
+  --ak-brand-110: oklch(0.72 calc(var(--ak-brand-chroma) * 0.75) var(--ak-brand-hue));
+  --ak-brand-120: oklch(0.77 calc(var(--ak-brand-chroma) * 0.62) var(--ak-brand-hue));
+  --ak-brand-130: oklch(0.82 calc(var(--ak-brand-chroma) * 0.5) var(--ak-brand-hue));
+  --ak-brand-140: oklch(0.87 calc(var(--ak-brand-chroma) * 0.38) var(--ak-brand-hue));
+  --ak-brand-150: oklch(0.92 calc(var(--ak-brand-chroma) * 0.24) var(--ak-brand-hue));
+  --ak-brand-160: oklch(0.965 calc(var(--ak-brand-chroma) * 0.1) var(--ak-brand-hue));
+
+  /* ---------------------------------------------------------------------
+     Neutral (grey) ramp — named by lightness percentage.
+     --------------------------------------------------------------------- */
+  --ak-white: #ffffff;
+  --ak-black: #000000;
+  --ak-grey-4: #0a0a0a;
+  --ak-grey-8: #141414;
+  --ak-grey-10: #1a1a1a;
+  --ak-grey-12: #1f1f1f;
+  --ak-grey-14: #242424;
+  --ak-grey-16: #292929;
+  --ak-grey-18: #2e2e2e;
+  --ak-grey-20: #333333;
+  --ak-grey-22: #383838;
+  --ak-grey-24: #3d3d3d;
+  --ak-grey-26: #424242;
+  --ak-grey-30: #4d4d4d;
+  --ak-grey-32: #525252;
+  --ak-grey-36: #5c5c5c;
+  --ak-grey-38: #616161;
+  --ak-grey-40: #666666;
+  --ak-grey-44: #707070;
+  --ak-grey-52: #858585;
+  --ak-grey-60: #999999;
+  --ak-grey-68: #adadad;
+  --ak-grey-74: #bdbdbd;
+  --ak-grey-78: #c7c7c7;
+  --ak-grey-82: #d1d1d1;
+  --ak-grey-84: #d6d6d6;
+  --ak-grey-88: #e0e0e0;
+  --ak-grey-90: #e6e6e6;
+  --ak-grey-92: #ebebeb;
+  --ak-grey-94: #f0f0f0;
+  --ak-grey-96: #f5f5f5;
+  --ak-grey-98: #fafafa;
+
+  /* ---------------------------------------------------------------------
+     Status ramps. 10 = darkest … 80 = lightest tint.
+     --------------------------------------------------------------------- */
+  --ak-green-10: #052505;
+  --ak-green-20: #094509;
+  --ak-green-30: #0b6a0b;
+  --ak-green-40: #107c10;
+  --ak-green-50: #359b35;
+  --ak-green-60: #5ec75e;
+  --ak-green-70: #9fd89f;
+  --ak-green-80: #f1faf1;
+
+  --ak-amber-10: #3d1d03;
+  --ak-amber-20: #6e3204;
+  --ak-amber-30: #8f4206;
+  --ak-amber-40: #c85a06;
+  --ak-amber-50: #e9781f;
+  --ak-amber-60: #f8a65c;
+  --ak-amber-70: #fcd0a8;
+  --ak-amber-80: #fff8f1;
+
+  --ak-red-10: #3b0509;
+  --ak-red-20: #6e0811;
+  --ak-red-30: #a80d1a;
+  --ak-red-40: #c50f1f;
+  --ak-red-50: #d63d4a;
+  --ak-red-60: #e77983;
+  --ak-red-70: #f1bbbf;
+  --ak-red-80: #fdf3f4;
+
+  --ak-cyan-10: #021f2b;
+  --ak-cyan-20: #04384d;
+  --ak-cyan-30: #035a78;
+  --ak-cyan-40: #0471a0;
+  --ak-cyan-50: #2b8fbf;
+  --ak-cyan-60: #63b4dc;
+  --ak-cyan-70: #a9d8ef;
+  --ak-cyan-80: #f1f9fd;
+
+  /* ---------------------------------------------------------------------
+     Accent palette: 12 hues for categories, tags, avatars and illustrations.
+     Generated in OKLCH (fixed lightness per step, chroma clamped to sRGB) so
+     every hue has the same perceived weight at the same step.
+     10 = darkest … 80 = lightest tint. Contrast verified in the light, dark and
+     high-contrast role mappings (see themes.css).
+     Hues: red, orange, amber, lime, green, teal, cyan, blue, indigo, purple, magenta, pink.
+     --------------------------------------------------------------------- */
+  --ak-palette-red-10: #420105;
+  --ak-palette-red-20: #6a000b;
+  --ak-palette-red-30: #970818;
+  --ak-palette-red-40: #b02a2d;
+  --ak-palette-red-50: #d24c49;
+  --ak-palette-red-60: #f9837c;
+  --ak-palette-red-70: #fec8c3;
+  --ak-palette-red-80: #fef4f3;
+
+  --ak-palette-orange-10: #361400;
+  --ak-palette-orange-20: #572501;
+  --ak-palette-orange-30: #7e3903;
+  --ak-palette-orange-40: #9c4700;
+  --ak-palette-orange-50: #c85d02;
+  --ak-palette-orange-60: #f28d50;
+  --ak-palette-orange-70: #ffcbae;
+  --ak-palette-orange-80: #fef5f0;
+
+  --ak-palette-amber-10: #2d1b00;
+  --ak-palette-amber-20: #492f02;
+  --ak-palette-amber-30: #6c4701;
+  --ak-palette-amber-40: #855904;
+  --ak-palette-amber-50: #ab7302;
+  --ak-palette-amber-60: #df9c28;
+  --ak-palette-amber-70: #f6d19f;
+  --ak-palette-amber-80: #fef5ea;
+
+  --ak-palette-lime-10: #192400;
+  --ak-palette-lime-20: #2c3c01;
+  --ak-palette-lime-30: #425900;
+  --ak-palette-lime-40: #536f04;
+  --ak-palette-lime-50: #6c8e03;
+  --ak-palette-lime-60: #96ba4b;
+  --ak-palette-lime-70: #cce1aa;
+  --ak-palette-lime-80: #f3f9eb;
+
+  --ak-palette-green-10: #00270d;
+  --ak-palette-green-20: #01421a;
+  --ak-palette-green-30: #016129;
+  --ak-palette-green-40: #057836;
+  --ak-palette-green-50: #059a46;
+  --ak-palette-green-60: #5ec479;
+  --ak-palette-green-70: #b4e6bd;
+  --ak-palette-green-80: #eefbf0;
+
+  --ak-palette-teal-10: #022620;
+  --ak-palette-teal-20: #003f36;
+  --ak-palette-teal-30: #005d51;
+  --ak-palette-teal-40: #037465;
+  --ak-palette-teal-50: #059583;
+  --ak-palette-teal-60: #10c5ae;
+  --ak-palette-teal-70: #9fe9d9;
+  --ak-palette-teal-80: #e9fcf7;
+
+  --ak-palette-cyan-10: #00242c;
+  --ak-palette-cyan-20: #013d48;
+  --ak-palette-cyan-30: #005a6a;
+  --ak-palette-cyan-40: #016f82;
+  --ak-palette-cyan-50: #0090a8;
+  --ak-palette-cyan-60: #02bfde;
+  --ak-palette-cyan-70: #9ce5f7;
+  --ak-palette-cyan-80: #eafaff;
+
+  --ak-palette-blue-10: #001e43;
+  --ak-palette-blue-20: #01346b;
+  --ak-palette-blue-30: #024e9a;
+  --ak-palette-blue-40: #0161bd;
+  --ak-palette-blue-50: #2a80e2;
+  --ak-palette-blue-60: #6eadfe;
+  --ak-palette-blue-70: #bedafe;
+  --ak-palette-blue-80: #f2f7fe;
+
+  --ak-palette-indigo-10: #14154e;
+  --ak-palette-indigo-20: #252779;
+  --ak-palette-indigo-30: #3a3eaa;
+  --ak-palette-indigo-40: #4b53c2;
+  --ak-palette-indigo-50: #6572e4;
+  --ak-palette-indigo-60: #93a3fe;
+  --ak-palette-indigo-70: #ccd5ff;
+  --ak-palette-indigo-80: #f4f6fe;
+
+  --ak-palette-purple-10: #280c47;
+  --ak-palette-purple-20: #421b6f;
+  --ak-palette-purple-30: #602e9d;
+  --ak-palette-purple-40: #7444b4;
+  --ak-palette-purple-50: #9163d5;
+  --ak-palette-purple-60: #b994f8;
+  --ak-palette-purple-70: #deceff;
+  --ak-palette-purple-80: #f8f5fe;
+
+  --ak-palette-magenta-10: #370335;
+  --ak-palette-magenta-20: #580c55;
+  --ak-palette-magenta-30: #7f1c7b;
+  --ak-palette-magenta-40: #953490;
+  --ak-palette-magenta-50: #b654b0;
+  --ak-palette-magenta-60: #dd87d6;
+  --ak-palette-magenta-70: #f5c6f0;
+  --ak-palette-magenta-80: #fef3fd;
+
+  --ak-palette-pink-10: #3f0022;
+  --ak-palette-pink-20: #640139;
+  --ak-palette-pink-30: #900b54;
+  --ak-palette-pink-40: #a72a68;
+  --ak-palette-pink-50: #ca4b85;
+  --ak-palette-pink-60: #f081af;
+  --ak-palette-pink-70: #fec5da;
+  --ak-palette-pink-80: #fef3f7;
+
+  /* Data-visualisation categorical palette. Validated for colour-vision
+     deficiency (adjacent-pair ΔE ≥ 8) in both modes; fixed order, never cycled.
+     Deliberately NOT tied to the brand hue so rebranding cannot break it. */
+  --ak-data-1: #2a78d6;
+  --ak-data-2: #eb6834;
+  --ak-data-3: #1baf7a;
+  --ak-data-4: #eda100;
+  --ak-data-5: #e87ba4;
+  --ak-data-6: #008300;
+  --ak-data-1-dark: #3987e5;
+  --ak-data-2-dark: #d95926;
+  --ak-data-3-dark: #199e70;
+  --ak-data-4-dark: #c98500;
+  --ak-data-5-dark: #d55181;
+  --ak-data-6-dark: #008300;
+
+  /* ---------------------------------------------------------------------
+     Typography
+     --------------------------------------------------------------------- */
+  --ak-font-family-base: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont,
+    'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
+  --ak-font-family-mono: 'Cascadia Code', 'Cascadia Mono', Consolas, 'SF Mono', 'Roboto Mono', Menlo, Monaco,
+    'Courier New', monospace;
+  --ak-font-family-numeric: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+
+  --ak-font-weight-regular: 400;
+  --ak-font-weight-medium: 500;
+  --ak-font-weight-semibold: 600;
+  --ak-font-weight-bold: 700;
+
+  --ak-font-size-100: 10px;
+  --ak-font-size-200: 12px;
+  --ak-font-size-300: 14px;
+  --ak-font-size-400: 16px;
+  --ak-font-size-500: 20px;
+  --ak-font-size-600: 24px;
+  --ak-font-size-700: 28px;
+  --ak-font-size-800: 32px;
+  --ak-font-size-900: 40px;
+  --ak-font-size-1000: 68px;
+
+  --ak-line-height-100: 14px;
+  --ak-line-height-200: 16px;
+  --ak-line-height-300: 20px;
+  --ak-line-height-400: 22px;
+  --ak-line-height-500: 26px;
+  --ak-line-height-600: 32px;
+  --ak-line-height-700: 36px;
+  --ak-line-height-800: 40px;
+  --ak-line-height-900: 52px;
+  --ak-line-height-1000: 92px;
+
+  --ak-letter-spacing-tight: -0.01em;
+  --ak-letter-spacing-normal: 0;
+  --ak-letter-spacing-wide: 0.02em;
+
+  /* ---------------------------------------------------------------------
+     Spacing — 4px base
+     --------------------------------------------------------------------- */
+  --ak-space-1: 4px;
+  --ak-space-2: 8px;
+  --ak-space-3: 12px;
+  --ak-space-4: 16px;
+  --ak-space-5: 20px;
+  --ak-space-6: 24px;
+  --ak-space-8: 32px;
+  --ak-space-10: 40px;
+  --ak-space-12: 48px;
+  --ak-space-16: 64px;
+  --ak-space-20: 80px;
+  --ak-space-24: 96px;
+
+  /* ---------------------------------------------------------------------
+     Corner radius — restrained
+     --------------------------------------------------------------------- */
+  --ak-radius-none: 0;
+  --ak-radius-small: 2px;
+  --ak-radius-medium: 4px;
+  --ak-radius-large: 6px;
+  --ak-radius-xlarge: 8px;
+  --ak-radius-circular: 9999px;
+
+  /* ---------------------------------------------------------------------
+     Stroke widths
+     --------------------------------------------------------------------- */
+  --ak-stroke-thin: 1px;
+  --ak-stroke-thick: 2px;
+  --ak-stroke-thicker: 3px;
+
+  /* ---------------------------------------------------------------------
+     Motion
+     --------------------------------------------------------------------- */
+  --ak-duration-ultra-fast: 50ms;
+  --ak-duration-faster: 100ms;
+  --ak-duration-fast: 150ms;
+  --ak-duration-normal: 200ms;
+  --ak-duration-gentle: 250ms;
+  --ak-duration-slow: 300ms;
+  --ak-duration-slower: 400ms;
+
+  --ak-ease-standard: cubic-bezier(0.33, 0, 0.67, 1);
+  --ak-ease-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --ak-ease-accelerate: cubic-bezier(0.9, 0.1, 1, 0.2);
+  --ak-ease-linear: linear;
+
+  /* ---------------------------------------------------------------------
+     Control sizing (heights shared by buttons, inputs, selects)
+     --------------------------------------------------------------------- */
+  --ak-size-control-sm: 24px;
+  --ak-size-control-md: 32px;
+  --ak-size-control-lg: 40px;
+  --ak-size-touch-target: 44px;
+
+  /* Z-index scale */
+  --ak-z-sticky: 20;
+  --ak-z-nav: 30;
+  --ak-z-overlay: 40;
+  --ak-z-modal: 50;
+  --ak-z-popover: 60;
+  --ak-z-toast: 70;
+  --ak-z-tooltip: 80;
+}

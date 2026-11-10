@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Form{% endblock %}
+{% block content %}
+<div class="mx-auto flex max-w-2xl flex-col gap-6">
+  <div>
+    <h1 class="text-title-2">Create an account</h1>
+    <p class="text-body-1 text-secondary">A plain Django form. <code>{% templatetag openvariable %} form {% templatetag closevariable %}</code> renders AkwapUI fields because of <code>FORM_RENDERER</code>.</p>
+  </div>
+  {% ak_card %}
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form }}
+      <div class="mt-6 flex justify-end gap-2">
+        {% ak_button "Cancel" href="/" variant="subtle" %}
+        {% ak_button "Create account" variant="primary" type="submit" %}
+      </div>
+    </form>
+  {% endak_card %}
+</div>
+{% endblock %}

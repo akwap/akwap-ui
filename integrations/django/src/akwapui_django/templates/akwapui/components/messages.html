@@ -1,0 +1,8 @@
+{% load akwapui %}{% if items %}<div class="{% if toast %}ak-toaster{% else %}ak-messages{% endif %}"{% if toast %} data-ak-toaster data-ak-timeout="{{ timeout }}"{% endif %}>
+{% for item in items %}  <div class="ak-alert{% if item.intent != 'info' %} ak-alert-{{ item.intent }}{% endif %}{% if item.message.extra_tags %} {{ item.message.extra_tags }}{% endif %}" role="{{ item.role }}">
+    {% ak_icon item.icon class="ak-alert-icon" %}
+    <span class="sr-only">{{ item.intent_label }}:</span>
+    <div class="ak-alert-content"><div class="ak-alert-body">{{ item.message }}</div></div>
+    {% if dismissible %}<button type="button" class="ak-alert-dismiss" data-ak-dismiss aria-label="Dismiss">{% ak_icon "close" %}</button>{% endif %}
+  </div>
+{% endfor %}</div>{% endif %}

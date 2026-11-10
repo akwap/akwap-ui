@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="flex flex-col gap-6">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      {% ak_breadcrumb items=breadcrumb %}
+      <h1 class="mt-1 text-title-2">Dashboard</h1>
+      <p class="text-body-1 text-secondary">Server-rendered with Django templates and AkwapUI tags.</p>
+    </div>
+    <div class="flex gap-2">
+      {% ak_button "Export" icon="download" %}
+      {% ak_button "New order" variant="primary" icon="add" data_ak_dialog_open="new-order" %}
+    </div>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    {% ak_stat label="Revenue" value="$48,210" icon="wallet" delta="+12.4%" direction="up" good=True delta_label="vs last month" %}
+    {% ak_stat label="Orders" value="1,284" icon="document" delta="+3.1%" direction="up" good=True delta_label="vs last month" %}
+    {% ak_stat label="Refunds" value="23" icon="undo" delta="+8" direction="up" good=False delta_label="vs last month" %}
+    {% ak_stat label="Active users" value="912" icon="users" delta="0%" delta_label="no change" %}
+  </div>
+
+  <div class="grid gap-4 lg:grid-cols-3">
+    <div class="min-w-0 lg:col-span-2">
+      <div class="ak-table-wrap">
+        <table class="ak-table">
+          <caption>Recent orders</caption>
+          <thead><tr><th scope="col">Order</th><th scope="col">Customer</th><th scope="col">Status</th><th scope="col" class="ak-num">Amount</th></tr></thead>
+          <tbody>
+          {% for order in page_obj %}
+            <tr>
+              <td class="font-mono text-caption-1">{{ order.id }}</td>
+              <td><span class="flex items-center gap-2">{% ak_avatar order.customer size="sm" decorative=True %}{{ order.customer }}</span></td>
+              <td>{% ak_badge order.status.0 color=order.status.1 dot=True %}</td>
+              <td class="ak-num">${{ order.amount }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-3">{% ak_pagination page_obj %}</div>
+    </div>
+    <div class="flex min-w-0 flex-col gap-4">
+      {% ak_card title="Monthly goals" subtitle="Updated hourly" %}
+        <div class="flex flex-col gap-4">
+          {% ak_progress 72 label="Revenue target" %}
+          {% ak_progress 45 label="New customers" intent="warning" %}
+          {% ak_progress 96 label="Uptime" intent="success" value_text="99.96%" %}
+        </div>
+      {% endak_card %}
+      {% ak_alert intent="warning" title="Payout delayed" dismissible=True %}Your bank asked for one more document. <a class="ak-link" href="#">Upload it</a>.{% endak_alert %}
+    </div>
+  </div>
+</div>
+
+{% ak_dialog id="new-order" title="Create an order" %}
+  <form method="dialog">
+    <div class="ak-dialog-body">
+      <p>This dialog is a native &lt;dialog&gt;: focus is trapped, Escape closes it, and it needs no framework.</p>
+    </div>
+    <div class="ak-dialog-footer">
+      {% ak_button "Cancel" data_ak_dialog_close=True %}
+      {% ak_button "Create" variant="primary" type="submit" %}
+    </div>
+  </form>
+{% endak_dialog %}
+{% endblock %}

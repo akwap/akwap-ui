@@ -1,0 +1,295 @@
+/* ==========================================================================
+   AkwapUI — Tailwind CSS v4 entry (CSS-first configuration)
+   --------------------------------------------------------------------------
+   1. tokens.css      global raw values           (--ak-*)
+   2. themes.css      semantic roles per theme     (--ak-color-*, --ak-shadow-*)
+   3. @theme inline   exposes semantic roles as Tailwind utilities
+   4. typography.css  type-ramp helpers & prose
+   5. components.css  tiny shared recipes (focus ring, scrollbars, code)
+
+   `@theme inline` means utilities compile to var(--ak-…) directly, so a
+   theme switch (data-theme) or a brand change re-colours every utility
+   with zero rebuilds.
+   ========================================================================== */
+
+@import './tokens.css';
+@import './themes.css';
+
+/* Theme variants: `dark:` and `hc:` follow the data-theme attribute. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant hc (&:where([data-theme='high-contrast'], [data-theme='high-contrast'] *));
+
+@theme inline {
+  /* Remove Tailwind's default palettes so only design tokens can be used. */
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --font-*: initial;
+
+  /* ---- Colours -------------------------------------------------------- */
+  --color-brand: var(--ak-color-brand-primary);
+  --color-brand-hover: var(--ak-color-brand-hover);
+  --color-brand-pressed: var(--ak-color-brand-pressed);
+  --color-brand-selected: var(--ak-color-brand-selected);
+  --color-brand-secondary: var(--ak-color-brand-secondary);
+  --color-brand-subtle: var(--ak-color-brand-subtle);
+  --color-brand-subtle-hover: var(--ak-color-brand-subtle-hover);
+  --color-brand-foreground: var(--ak-color-brand-foreground);
+  --color-brand-stroke: var(--ak-color-brand-stroke);
+  --color-on-brand: var(--ak-color-on-brand);
+
+  --color-background: var(--ak-color-background);
+  --color-background-secondary: var(--ak-color-background-secondary);
+  --color-surface: var(--ak-color-surface);
+  --color-surface-secondary: var(--ak-color-surface-secondary);
+  --color-surface-tertiary: var(--ak-color-surface-tertiary);
+  --color-surface-hover: var(--ak-color-surface-hover);
+  --color-surface-pressed: var(--ak-color-surface-pressed);
+  --color-surface-selected: var(--ak-color-surface-selected);
+  --color-surface-inverse: var(--ak-color-surface-inverse);
+  --color-surface-overlay: var(--ak-color-surface-overlay);
+  --color-backdrop: var(--ak-color-backdrop);
+  --color-subtle-hover: var(--ak-color-subtle-hover);
+  --color-subtle-pressed: var(--ak-color-subtle-pressed);
+  --color-control: var(--ak-color-control);
+  --color-control-disabled: var(--ak-color-control-disabled);
+
+  /* Foreground roles (also usable as text-fg-*, fill-fg-*, etc.) */
+  --color-fg-primary: var(--ak-color-text-primary);
+  --color-fg-secondary: var(--ak-color-text-secondary);
+  --color-fg-tertiary: var(--ak-color-text-tertiary);
+  --color-fg-disabled: var(--ak-color-text-disabled);
+  --color-fg-inverse: var(--ak-color-text-inverse);
+  --color-link: var(--ak-color-text-link);
+  --color-link-hover: var(--ak-color-text-link-hover);
+
+  /* Stroke roles (also usable as border-line, divide-line-subtle, …) */
+  --color-line: var(--ak-color-border);
+  --color-line-hover: var(--ak-color-border-hover);
+  --color-line-strong: var(--ak-color-border-strong);
+  --color-line-subtle: var(--ak-color-border-subtle);
+  --color-line-focus: var(--ak-color-border-focus);
+  --color-line-disabled: var(--ak-color-border-disabled);
+  --color-control-underline: var(--ak-color-control-underline);
+
+  /* Accent palette roles: text-teal, bg-teal-strong, bg-teal-background, border-teal-border … */
+  --color-on-accent: var(--ak-color-on-accent);
+  --color-on-status: var(--ak-color-on-status);
+  --color-red: var(--ak-color-red);
+  --color-red-strong: var(--ak-color-red-strong);
+  --color-red-background: var(--ak-color-red-background);
+  --color-red-border: var(--ak-color-red-border);
+  --color-orange: var(--ak-color-orange);
+  --color-orange-strong: var(--ak-color-orange-strong);
+  --color-orange-background: var(--ak-color-orange-background);
+  --color-orange-border: var(--ak-color-orange-border);
+  --color-amber: var(--ak-color-amber);
+  --color-amber-strong: var(--ak-color-amber-strong);
+  --color-amber-background: var(--ak-color-amber-background);
+  --color-amber-border: var(--ak-color-amber-border);
+  --color-lime: var(--ak-color-lime);
+  --color-lime-strong: var(--ak-color-lime-strong);
+  --color-lime-background: var(--ak-color-lime-background);
+  --color-lime-border: var(--ak-color-lime-border);
+  --color-green: var(--ak-color-green);
+  --color-green-strong: var(--ak-color-green-strong);
+  --color-green-background: var(--ak-color-green-background);
+  --color-green-border: var(--ak-color-green-border);
+  --color-teal: var(--ak-color-teal);
+  --color-teal-strong: var(--ak-color-teal-strong);
+  --color-teal-background: var(--ak-color-teal-background);
+  --color-teal-border: var(--ak-color-teal-border);
+  --color-cyan: var(--ak-color-cyan);
+  --color-cyan-strong: var(--ak-color-cyan-strong);
+  --color-cyan-background: var(--ak-color-cyan-background);
+  --color-cyan-border: var(--ak-color-cyan-border);
+  --color-blue: var(--ak-color-blue);
+  --color-blue-strong: var(--ak-color-blue-strong);
+  --color-blue-background: var(--ak-color-blue-background);
+  --color-blue-border: var(--ak-color-blue-border);
+  --color-indigo: var(--ak-color-indigo);
+  --color-indigo-strong: var(--ak-color-indigo-strong);
+  --color-indigo-background: var(--ak-color-indigo-background);
+  --color-indigo-border: var(--ak-color-indigo-border);
+  --color-purple: var(--ak-color-purple);
+  --color-purple-strong: var(--ak-color-purple-strong);
+  --color-purple-background: var(--ak-color-purple-background);
+  --color-purple-border: var(--ak-color-purple-border);
+  --color-magenta: var(--ak-color-magenta);
+  --color-magenta-strong: var(--ak-color-magenta-strong);
+  --color-magenta-background: var(--ak-color-magenta-background);
+  --color-magenta-border: var(--ak-color-magenta-border);
+  --color-pink: var(--ak-color-pink);
+  --color-pink-strong: var(--ak-color-pink-strong);
+  --color-pink-background: var(--ak-color-pink-background);
+  --color-pink-border: var(--ak-color-pink-border);
+  --color-success: var(--ak-color-success);
+  --color-success-strong: var(--ak-color-success-strong);
+  --color-success-background: var(--ak-color-success-background);
+  --color-success-border: var(--ak-color-success-border);
+  --color-warning: var(--ak-color-warning);
+  --color-warning-strong: var(--ak-color-warning-strong);
+  --color-warning-background: var(--ak-color-warning-background);
+  --color-warning-border: var(--ak-color-warning-border);
+  --color-danger: var(--ak-color-danger);
+  --color-danger-strong: var(--ak-color-danger-strong);
+  --color-danger-hover: var(--ak-color-danger-hover);
+  --color-danger-pressed: var(--ak-color-danger-pressed);
+  --color-danger-background: var(--ak-color-danger-background);
+  --color-danger-border: var(--ak-color-danger-border);
+  --color-info: var(--ak-color-info);
+  --color-info-strong: var(--ak-color-info-strong);
+  --color-info-background: var(--ak-color-info-background);
+  --color-info-border: var(--ak-color-info-border);
+
+  --color-data-1: var(--ak-color-data-1);
+  --color-data-2: var(--ak-color-data-2);
+  --color-data-3: var(--ak-color-data-3);
+  --color-data-4: var(--ak-color-data-4);
+  --color-data-5: var(--ak-color-data-5);
+  --color-data-6: var(--ak-color-data-6);
+  --color-chart-grid: var(--ak-color-chart-grid);
+
+  /* ---- Semantic aliases (namespaced so they only create the intended
+     utility: text-primary sets colour only, border-default only borders) */
+  --text-color-primary: var(--ak-color-text-primary);
+  --text-color-secondary: var(--ak-color-text-secondary);
+  --text-color-tertiary: var(--ak-color-text-tertiary);
+  --text-color-disabled: var(--ak-color-text-disabled);
+  --text-color-inverse: var(--ak-color-text-inverse);
+  --text-color-brand: var(--ak-color-brand-foreground);
+  --text-color-brand-hover: var(--ak-color-brand-foreground-hover);
+  --border-color-default: var(--ak-color-border);
+  --border-color-subtle: var(--ak-color-border-subtle);
+  --border-color-strong: var(--ak-color-border-strong);
+
+  /* ---- Typography ----------------------------------------------------- */
+  --font-sans: var(--ak-font-family-base);
+  --font-mono: var(--ak-font-family-mono);
+  --font-weight-normal: var(--ak-font-weight-regular);
+  --font-weight-regular: var(--ak-font-weight-regular);
+  --font-weight-medium: var(--ak-font-weight-medium);
+  --font-weight-semibold: var(--ak-font-weight-semibold);
+  --font-weight-bold: var(--ak-font-weight-bold);
+
+  --text-display: clamp(40px, 4vw + 1.5rem, var(--ak-font-size-1000));
+  --text-display--line-height: 1.35;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: var(--ak-letter-spacing-tight);
+  --text-large-title: clamp(32px, 2vw + 1.25rem, var(--ak-font-size-900));
+  --text-large-title--line-height: 1.3;
+  --text-large-title--font-weight: 600;
+  --text-large-title--letter-spacing: var(--ak-letter-spacing-tight);
+  --text-title-1: var(--ak-font-size-800);
+  --text-title-1--line-height: var(--ak-line-height-800);
+  --text-title-1--font-weight: 600;
+  --text-title-2: var(--ak-font-size-700);
+  --text-title-2--line-height: var(--ak-line-height-700);
+  --text-title-2--font-weight: 600;
+  --text-title-3: var(--ak-font-size-600);
+  --text-title-3--line-height: var(--ak-line-height-600);
+  --text-title-3--font-weight: 600;
+  --text-subtitle-1: var(--ak-font-size-500);
+  --text-subtitle-1--line-height: var(--ak-line-height-500);
+  --text-subtitle-1--font-weight: 600;
+  --text-subtitle-2: var(--ak-font-size-400);
+  --text-subtitle-2--line-height: var(--ak-line-height-400);
+  --text-subtitle-2--font-weight: 600;
+  --text-body-2: var(--ak-font-size-400);
+  --text-body-2--line-height: var(--ak-line-height-400);
+  --text-body-1: var(--ak-font-size-300);
+  --text-body-1--line-height: var(--ak-line-height-300);
+  --text-body-1-strong: var(--ak-font-size-300);
+  --text-body-1-strong--line-height: var(--ak-line-height-300);
+  --text-body-1-strong--font-weight: 600;
+  --text-caption-1: var(--ak-font-size-200);
+  --text-caption-1--line-height: var(--ak-line-height-200);
+  --text-caption-1-strong: var(--ak-font-size-200);
+  --text-caption-1-strong--line-height: var(--ak-line-height-200);
+  --text-caption-1-strong--font-weight: 600;
+  --text-caption-2: var(--ak-font-size-100);
+  --text-caption-2--line-height: var(--ak-line-height-100);
+
+  /* ---- Spacing (4px base; p-1 = 4px, p-4 = 16px, …) ------------------- */
+  --spacing: 4px;
+  --spacing-control-x: var(--ak-space-3);
+  --spacing-card: var(--ak-space-5);
+  --spacing-page: var(--ak-space-6);
+  --spacing-section: var(--ak-space-16);
+  --spacing-stack: var(--ak-space-4);
+  --spacing-inline: var(--ak-space-2);
+  --spacing-control-sm: var(--ak-size-control-sm);
+  --spacing-control-md: var(--ak-size-control-md);
+  --spacing-control-lg: var(--ak-size-control-lg);
+  --spacing-touch: var(--ak-size-touch-target);
+
+  /* ---- Radius --------------------------------------------------------- */
+  --radius-none: var(--ak-radius-none);
+  --radius-sm: var(--ak-radius-small);
+  --radius-md: var(--ak-radius-medium);
+  --radius-lg: var(--ak-radius-large);
+  --radius-xl: var(--ak-radius-xlarge);
+  --radius-full: var(--ak-radius-circular);
+  --radius-control: var(--ak-radius-control);
+  --radius-card: var(--ak-radius-card);
+  --radius-overlay: var(--ak-radius-overlay);
+
+  /* ---- Elevation ------------------------------------------------------ */
+  --shadow-elevation-0: var(--ak-shadow-0);
+  --shadow-elevation-2: var(--ak-shadow-2);
+  --shadow-elevation-4: var(--ak-shadow-4);
+  --shadow-elevation-8: var(--ak-shadow-8);
+  --shadow-elevation-16: var(--ak-shadow-16);
+  --shadow-elevation-28: var(--ak-shadow-28);
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease-standard: var(--ak-ease-standard);
+  --ease-decelerate: var(--ak-ease-decelerate);
+  --ease-accelerate: var(--ak-ease-accelerate);
+
+  /* ---- Layout --------------------------------------------------------- */
+  --breakpoint-xs: 26.5625rem; /* 425px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 90rem; /* 1440px */
+  --breakpoint-3xl: 120rem; /* 1920px */
+
+  --z-index-sticky: var(--ak-z-sticky);
+}
+
+@utility duration-fast {
+  transition-duration: var(--ak-duration-fast);
+}
+@utility duration-normal {
+  transition-duration: var(--ak-duration-normal);
+}
+@utility duration-slow {
+  transition-duration: var(--ak-duration-slow);
+}
+@utility duration-faster {
+  transition-duration: var(--ak-duration-faster);
+}
+
+/* Visible, theme-aware focus ring: a 2px outer ring with an inner contrast
+   ring so it is visible on any background (WCAG 2.4.7 / 2.4.11). */
+@utility focus-ring {
+  &:focus-visible {
+    outline: var(--ak-focus-ring-width) solid var(--ak-color-border-focus);
+    outline-offset: 1px;
+    box-shadow: 0 0 0 1px var(--ak-color-border-focus-inner);
+  }
+}
+@utility focus-ring-inset {
+  &:focus-visible {
+    outline: var(--ak-focus-ring-width) solid var(--ak-color-border-focus);
+    outline-offset: -2px;
+  }
+}
+
+@import './typography.css';
+@import './components.css';
+@import './django.css';
+@import './django-badges.css';

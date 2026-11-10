@@ -1,0 +1,7 @@
+{% load akwapui %}<section class="ak-stat"{{ attrs }}>
+  <h3 class="ak-stat-label">{% if icon %}<span class="ak-stat-icon">{% ak_icon icon %}</span>{% endif %}<span class="truncate">{{ label }}</span></h3>
+  <div>
+    <p class="ak-stat-value">{{ value }}</p>
+    {% if delta is not None %}<p class="ak-stat-delta {{ tone }}"><strong>{% ak_icon delta_icon %}<span class="sr-only">{{ direction_text }} </span>{{ delta }}</strong>{% if delta_label %}<span>{{ delta_label }}</span>{% endif %}</p>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Vue islands{% endblock %}
+{% block content %}
+<div class="flex flex-col gap-6">
+  <div>
+    <h1 class="text-title-2">Vue islands</h1>
+    <p class="text-body-1 text-secondary">Interactive AkwapUI Vue components mounted into a Django page with <code>{% templatetag openblock %} ak_island {% templatetag closeblock %}</code>. The rest of the page stays server-rendered.</p>
+  </div>
+  {% if not islands_built %}
+    {% ak_alert intent="warning" title="Islands are not built yet" %}Run <code>npm run build:lib</code> at the repo root, then <code>npm run islands</code> here.{% endak_alert %}
+  {% endif %}
+  {% ak_card title="Revenue" subtitle="AkLineChart" %}{% ak_island "AkLineChart" chart %}{% endak_card %}
+  {% ak_card title="Customers" subtitle="AkDataTable: sorting and row selection" %}{% ak_island "AkDataTable" table %}{% endak_card %}
+  {% ak_card title="Islands inside a Django form" subtitle="AkMultiSelect and AkDatePicker post like normal fields" %}
+    <form method="get" class="flex flex-col gap-4">
+      <div class="ak-field"><span class="ak-label">Topics</span>{% ak_island "AkMultiSelect" topics name="topics" %}</div>
+      <div class="ak-field"><span class="ak-label">Start date</span>{% ak_island "AkDatePicker" name="start" %}</div>
+      <div>{% ak_button "Submit" variant="primary" type="submit" %}</div>
+      {% if request.GET %}<p class="text-body-1 text-secondary">Django received: <code data-testid="received">{{ picked|join:", " }}</code></p>{% endif %}
+    </form>
+  {% endak_card %}
+</div>
+{% if islands_built %}<script type="module" src="{% static 'islands/islands.js' %}"></script>{% endif %}
+{% endblock %}
