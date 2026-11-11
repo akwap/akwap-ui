@@ -31,7 +31,10 @@
     "typecheck": "vue-tsc -b",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test --trace off"
+    "test:e2e": "playwright test --trace off",
+    "dev:website": "vite -c website/vite.config.ts",
+    "build:website": "vue-tsc -p website/tsconfig.json --noEmit && vite build -c website/vite.config.ts",
+    "preview:website": "vite preview -c website/vite.config.ts"
   },
   "peerDependencies": {
     "@lucide/vue": "^1.0.0",
