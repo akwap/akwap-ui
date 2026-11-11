@@ -1,0 +1,55 @@
+/* Akwap Systems website: AkwapUI tokens + a few site-level brand values. */
+@import '../../src/styles/tailwind.css';
+@source '../';
+@source '../../src';
+
+:root {
+  /* Brand seed: Lake Turkana's "jade sea". Drives every --ak-brand-* step. */
+  --ak-brand-hue: 178;
+  --ak-brand-chroma: 0.12;
+
+  --site-jade: oklch(0.78 0.13 178);
+  --site-sun: oklch(0.83 0.16 75);
+  --site-ember: oklch(0.7 0.18 45);
+  --site-star-core: #fff;
+  --site-night: oklch(0.14 0.02 240);
+  --site-night-2: oklch(0.18 0.025 235);
+}
+
+[data-theme='dark'] {
+  --ak-color-background: var(--site-night);
+  --ak-color-background-secondary: oklch(0.12 0.02 240);
+  --ak-color-surface: var(--site-night-2);
+  --ak-color-surface-secondary: oklch(0.21 0.025 235);
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.site-gradient-text {
+  background: linear-gradient(100deg, var(--site-jade), var(--site-sun) 70%, var(--site-ember));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-theme='high-contrast'] .site-gradient-text { background: none; color: inherit; }
+
+.site-eyebrow {
+  font-size: var(--ak-font-size-200);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--site-sun);
+}
+[data-theme='high-contrast'] .site-eyebrow { color: inherit; }
+
+.site-grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--ak-color-text-primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--ak-color-text-primary) 6%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.site-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.site-reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .site-reveal { opacity: 1; transform: none; transition: none; } }
